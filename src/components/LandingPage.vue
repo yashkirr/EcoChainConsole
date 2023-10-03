@@ -1,6 +1,6 @@
 <template>
+    <img class="logo" alt="Vue logo" src="../assets/logo.svg">
     <div class="container">
-      <h1>EcoChain</h1>
       <button @click="login">Login</button>
       <button @click="signUp">Sign Up</button>
     </div>
@@ -19,4 +19,25 @@
     }
   }
   </script>
-  
+
+  <style>
+  .logo {
+    height: 25vh;
+    pointer-events: none;
+    /* align to left of screeb=n */
+    position: absolute;
+    left: 0;
+    /* center vertically */
+    top: 35%;
+    transform: translateY(-50%);
+
+  }
+  /* place container next to .logo on the right side */
+
+  .container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  </style>

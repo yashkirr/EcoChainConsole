@@ -1,17 +1,32 @@
 <template>
-    <div>
-      <h2>EcoChain Dashboard</h2>
-      <!-- Dashboard content goes here -->
+    <div class = "content-wrapper">
+      <SideNavBar />
+      <div class="page-content">
+        <!-- Dashboard content goes here -->yee
+      </div>
     </div>
   </template>
   
   <script>
+import SideNavBar from './SideNavBar.vue';
+
   export default {
-    name: 'DashboardPage'
-  }
+    name: 'DashboardPage',
+    components: { SideNavBar }
+}
   </script>
   
-  <style>
-  /* Style for dashboard if needed */
-  </style>
+  <style scoped>
+.content-wrapper {
+  display: flex;
+  height: 100vh;
+  background-color: #F1F5F9;
+}
+
+.page-content {
+  flex: 1;
+  overflow-y: auto; /* Add scroll if content overflows */
+}
+</style>
+
   
