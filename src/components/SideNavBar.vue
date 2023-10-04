@@ -8,9 +8,6 @@
           </li>
         </ul>
       </div>
-      <div class="main-content">
-        <!-- Your main content goes here -->
-      </div>
     </div>
   </template>
   
@@ -34,12 +31,13 @@
   /* Wrapper styles */
   .wrapper {
     display: flex;
+    flex: 0 0 200px; /* flex-grow, flex-shrink, flex-basis */
     height: 100vh; /* 100% of the viewport height */
   }
   
   /* SideNavBar styles */
   .side-nav-bar {
-    flex: 0 0 200px; /* flex-grow, flex-shrink, flex-basis */
+    width: 100%;
     background-color: #1C2434;
     color: #ffffff;
     padding: 10px;

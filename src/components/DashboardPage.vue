@@ -2,17 +2,19 @@
     <div class = "content-wrapper">
       <SideNavBar />
       <div class="page-content">
-        <!-- Dashboard content goes here -->yee
+        <!-- Dashboard content goes here -->
+        <TopBar />
       </div>
     </div>
   </template>
   
   <script>
 import SideNavBar from './SideNavBar.vue';
+import TopBar from './TopBar.vue';
 
   export default {
     name: 'DashboardPage',
-    components: { SideNavBar }
+    components: { SideNavBar, TopBar }
 }
   </script>
   
@@ -21,6 +23,7 @@ import SideNavBar from './SideNavBar.vue';
   display: flex;
   height: 100vh;
   background-color: #F1F5F9;
+  overflow: hidden;
 }
 
 .page-content {
