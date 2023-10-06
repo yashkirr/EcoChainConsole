@@ -2,6 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import DashboardPage from '../components/DashboardPage.vue';
 import LandingPage from '../components/LandingPage.vue'; 
 import BackgroundInfo from '../components/BackgroundInfo.vue';
+import PlanetPage from '../components/PlanetPage.vue';
+import PeoplePage from '../components/PeoplePage.vue';
+
 
 const routes = [
   {
@@ -18,6 +21,16 @@ const routes = [
     path: '/BackgroundInfo',
     name: 'BackgroundInfo',
     component: BackgroundInfo
+  },
+  {
+    path: '/PlanetPage',
+    name: 'PlanetPage',
+    component: PlanetPage
+  },
+  {
+    path: '/PeoplePage',
+    name: 'PeoplePage',
+    component: PeoplePage
   }
 ];
 
