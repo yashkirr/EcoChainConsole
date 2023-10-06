@@ -2,8 +2,10 @@
     <div class = "content-wrapper">
       <SideNavBar />
       <div class="page-content">
+        <v-container>
         <TopBar />
-        <!-- Dashboard content goes here -->
+    </v-container>
+    <v-container>
     <div class="table">
       <v-table>
         <thead>
@@ -52,7 +54,7 @@
         </tbody>
       </v-table>
     </div>
-    
+</v-container>
 </div>
 </div>
   </template>
