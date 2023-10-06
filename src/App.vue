@@ -1,17 +1,11 @@
 <template>
-  <v-app>
-    <v-main>
-      <router-view></router-view>
-    </v-main>
-  </v-app>
+  <router-view></router-view>
 </template>
 
 <script>
-import router from './router/router';
 
 export default {
-  name: 'App',
-  component: router
+  name: 'App'
 } 
 </script>
 
