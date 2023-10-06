@@ -2,12 +2,11 @@
     <div class = "content-wrapper">
       <SideNavBar />
       <div class="page-content">
-        <!-- Dashboard content goes here -->
         <v-container>
         <TopBar />
       </v-container>
       <v-container>
-      <div class="top-bar">
+      
         <v-table>
       <thead>
         <tr>
@@ -16,15 +15,12 @@
           </td>
           
         </tr>
-        
-        
       </thead>
 
       <tbody>
         <tr>
           <td>Location</td>
           <td>[Address]</td>
-          
           <td>Industry</td>
           <td>[Industry Type]</td>
         </tr>
@@ -37,7 +33,7 @@
         </tr>
       </tbody>
     </v-table>
-    </div>
+  
   </v-container>
   <v-container>
 

@@ -2,58 +2,65 @@
     <div class = "content-wrapper">
       <SideNavBar />
       <div class="page-content">
+        <v-container>
         <TopBar />
-        <!-- Dashboard content goes here -->
-        <v-form v-model="valid">
-<v-container class="page-content" style="text-align: left;">
-    <h2>Submission Information</h2>
-</v-container>
-<v-divider></v-divider>
-            <v-container>
-                <v-row>
-                    <v-col cols="12" md="4">
-                        <v-text-field
-                        v-model="firstname"
-                        :rules="nameRules"
-                        :counter="10"
-                        label="First name"
-                        required
-                        hide-details
-                        ></v-text-field><br>
-                        <v-autocomplete
-                        ref="country"
-                        v-model="country"
-                        :rules="[() => !!country || 'This field is required']"
-                        :items="countries"
-                        label="dd/mm/yyyy"
-                        placeholder="Select..."
-                        required
-          ></v-autocomplete>
-          <v-spacer></v-spacer>
-                    </v-col>
-                    <v-col
-                    cols="12"
-                    md="4"
-                    >
-                    <v-text-field
-                    v-model="lastname"
-                    :rules="nameRules"
-                    :counter="10"
-                    label="Last name"
-                    hide-details
-                    required
-                    ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                    <v-text-field
-                    v-model="email"
-                    :rules="emailRules"
-                    label="E-mail"
-                    hide-details
-                    required
-                    ></v-text-field>
-                </v-col>
-            </v-row>
+     </v-container>
+     <v-container>
+            <v-table>
+                <thead>
+                    <tr>
+                        <td colspan="3">
+                            <h1>Submission Information</h1>
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <v-text-field
+                             v-model="firstname"
+                             :rules="nameRules"
+                             :counter="10"
+                             label="First name"
+                             required
+                             hide-details>
+                            </v-text-field>
+                        </td>
+                        <td>
+                            <v-text-field
+                            v-model="lastname"
+                            :rules="nameRules"
+                            :counter="10"
+                            label="Last name"
+                            hide-details
+                            required></v-text-field>
+                        </td>
+                        <td>
+                            <v-text-field
+                            v-model="email"
+                            :rules="emailRules"
+                            label="E-mail"
+                            hide-details
+                            required></v-text-field>
+                        </td>
+                    </tr><br>
+                    <tr>
+                        <td>
+                            <v-autocomplete
+                            ref="country"
+                            v-model="country"
+                            :rules="[() => !!country || 'This field is required']"
+                            :items="countries"
+                            label="dd/mm/yyyy"
+                            placeholder="Select..."
+                            required></v-autocomplete>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </v-table>    
+            <v-table>    
             <v-checkbox
             v-model="checkbox"
             :rules="[v => !!v || 'You must agree to continue!']"
@@ -61,8 +68,6 @@
 reporting"
             required
       ></v-checkbox>
-      <v-row>
-        <v-col align="end">
       <v-sheet width="300" class="mx-auto">
         <v-btn
           color="success"
@@ -72,13 +77,9 @@ reporting"
         >
           Save and Continue
         </v-btn>
-    </v-sheet>
-</v-col>
-</v-row>
-        </v-container>    
-    </v-form>
-
-    
+    </v-sheet>    
+</v-table>
+</v-container> 
 </div>
 </div>
 </template>
@@ -140,5 +141,6 @@ import TopBar from './TopBar.vue';
 .page-content {
   flex: 1;
   overflow-y: auto; /* Add scroll if content overflows */
+  text-align: left;
 }
 </style>
