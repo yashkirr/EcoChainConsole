@@ -2,6 +2,7 @@
     <div class = "content-wrapper">
       <SideNavBar />
       <div class="page-content">
+        <TopBar />
         <!-- Dashboard content goes here -->
     <div class="table">
       <v-table>
@@ -51,7 +52,7 @@
         </tbody>
       </v-table>
     </div>
-    <TopBar />
+    
 </div>
 </div>
   </template>
@@ -63,7 +64,7 @@ import TopBar from './TopBar.vue';
     export default {
         name: 'PeoplePage',
         components: { SideNavBar, TopBar },
-      data() {
+        data() {
         return {
           allApplicable: 'false', // Set default to 'false' string
           metrics: [
@@ -123,5 +124,5 @@ import TopBar from './TopBar.vue';
     .page-content {
   flex: 1;
   overflow-y: auto; /* Add scroll if content overflows */
-}
+    }
   </style>

@@ -2,9 +2,10 @@
     <div class = "content-wrapper">
       <SideNavBar />
       <div class="page-content">
+        <TopBar />
         <!-- Dashboard content goes here -->
         <v-form v-model="valid">
-<v-container style="text-align: left;">
+<v-container class="page-content" style="text-align: left;">
     <h2>Submission Information</h2>
 </v-container>
 <v-divider></v-divider>
@@ -77,7 +78,7 @@ reporting"
         </v-container>    
     </v-form>
 
-    <TopBar />
+    
 </div>
 </div>
 </template>

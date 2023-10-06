@@ -3,6 +3,7 @@
       <SideNavBar />
       <div class="page-content">
         <!-- Dashboard content goes here -->
+        <TopBar />
         <div class="table">
     <v-table>
       <thead>
@@ -52,7 +53,7 @@
       </tbody>
     </v-table>
   </div>
-    <TopBar />
+    
 </div>
 </div>
   </template>
