@@ -90,6 +90,11 @@ import TopBar from './TopBar.vue';
     export default {
         name: 'BackgroundInfo',
         components: { SideNavBar, TopBar },
+        methods: {
+      validate() {
+        this.$router.push('/PeoplePage');
+      },
+      },
         data: () => ({
         valid: false,
         firstname: '',

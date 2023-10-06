@@ -1,117 +1,127 @@
 <template>
-    <v-container>
-      <!-- Form -->
-      <v-form ref="form">
-        <!-- Name -->
-        <v-text-field
-          label="Name"
-          v-model="name"
-          required
-        ></v-text-field>
+    <div class = "content-wrapper">
+      <SideNavBar />
+      <div class="page-content">
+        <!-- Dashboard content goes here -->
+    <div class="table">
+      <v-table>
+        <thead>
+          <tr>
+            <td colspan="4">
+              Complete the sub sections below by inputting the scoring achieved
+              for each metric
+            </td>
   
-        <!-- Last Name -->
-        <v-text-field
-          label="Last Name"
-          v-model="lastName"
-          required
-        ></v-text-field>
+            <td>
+              <input type="radio" v-model="allApplicable" value="true" />
+              Mark entire category as not applicable
+            </td>
+            <td></td>
+          </tr>
   
-        <!-- Email -->
-        <v-text-field
-          label="Email"
-          v-model="email"
-          :rules="[emailRules]"
-          required
-        ></v-text-field>
-  
-        <!-- Reporting Period (Date Range Picker) -->
-        <v-row>
-          <v-col cols="6">
-            <v-menu
-              v-model="menuStartDate"
-              :close-on-content-click="false"
-              :nudge-right="40"
-              transition="scale-transition"
-              offset-y
-              min-width="auto"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-bind="attrs"
-                  v-on="on"
-                  label="Start Date"
-                  v-model="startDate"
-                  readonly
-                  required
-                ></v-text-field>
-              </template>
-              <v-date-picker v-model="startDate" @input="menuStartDate = false"></v-date-picker>
-            </v-menu>
-          </v-col>
-          <v-col cols="6">
-            <v-menu
-              v-model="menuEndDate"
-              :close-on-content-click="false"
-              :nudge-right="40"
-              transition="scale-transition"
-              offset-y
-              min-width="auto"
-            >
-              <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                  v-bind="attrs"
-                  v-on="on"
-                  label="End Date"
-                  v-model="endDate"
-                  readonly
-                  required
-                ></v-text-field>
-              </template>
-              <v-date-picker v-model="endDate" @input="menuEndDate = false"></v-date-picker>
-            </v-menu>
-          </v-col>
-        </v-row>
-  
-        <!-- Terms and Conditions -->
-        <v-checkbox
-          v-model="termsAccepted"
-          label="I accept the terms and conditions"
-          required
-        ></v-checkbox>
-  
-        <!-- Submit Button -->
-        <v-btn @click="submitForm">Submit</v-btn>
-      </v-form>
-    </v-container>
+          <tr>
+            <th class="text-left">Sub section</th>
+            <th class="text-left">Metric</th>
+            <th class="text-left">Scoring</th>
+            <th class="text-left">Applicable</th>
+            <th class="text-left">Scoring achieved</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in metrics" :key="item.name">
+            <td>{{ item.name }}</td>
+            <td>{{ item.Metric }}</td>
+            <td>
+              <a href="your_external_link_here" target="_blank">
+                <v-icon small>mdi-eye</v-icon>
+                View details and rationale
+              </a>
+            </td>
+            <td>
+              <v-switch v-model="item.isApplicable"></v-switch>
+            </td>
+            <td>
+              <v-text-field
+                v-model="item.scoringAchieved"
+                :disabled="!item.isApplicable"
+                prepend-icon="mdi-percent"
+              ></v-text-field>
+            </td>
+          </tr>
+        </tbody>
+      </v-table>
+    </div>
+    <TopBar />
+</div>
+</div>
   </template>
   
   <script>
-  export default {
-    data() {
-      return {
-        name: '',
-        lastName: '',
-        email: '',
-        startDate: null,
-        endDate: null,
-        menuStartDate: false,
-        menuEndDate: false,
-        termsAccepted: false,
-        emailRules: [
-          v => !!v || 'E-mail is required',
-          v => /.+@.+/.test(v) || 'E-mail must be valid'
-        ]
-      };
-    },
-    methods: {
-      submitForm() {
-        if (this.$refs.form.validate()) {
-          // Handle submission logic here
-          console.log('Form submitted');
-        } else {
-          console.log('Form validation failed');
+import SideNavBar from './SideNavBar.vue';
+import TopBar from './TopBar.vue';
+
+    export default {
+        name: 'PeoplePage',
+        components: { SideNavBar, TopBar },
+      data() {
+        return {
+          allApplicable: 'false', // Set default to 'false' string
+          metrics: [
+            {
+              name: 'Dignity and equality',
+              Metric: 'Diversity and Inclusion',
+              isApplicable: true,
+              scoringAchieved: '',
+            },
+            {
+              name: '',
+              Metric: 'Wage Level (%)',
+              isApplicable: true,
+              scoringAchieved: '',
+            },
+            {
+              name: '',
+              Metric: 'Pay equality',
+              isApplicable: true,
+              scoringAchieved: '',
+            },
+            {
+              name: 'Health and wellbeing ',
+              Metric: 'Rate of fatalities',
+              isApplicable: true,
+              scoringAchieved: '',
+            },
+          ],
         }
-      }
+      },
+  
+      watch: {
+        // Use watch to detect when allApplicable changes
+        allApplicable(newValue) {
+          const applicable = newValue === 'false'
+          this.metrics.forEach(item => (item.isApplicable = applicable))
+        },
+      },
     }
-  };
   </script>
+  
+  <style scoped>
+    .table {
+      color: var(--Dark, #1c2434);
+      font-family: 'Abyssinica SIL', sans-serif; /* Added fallback font */
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.5rem;
+    }
+    .content-wrapper {
+        display: flex;
+        height: 100vh;
+        background-color: #F1F5F9;
+        overflow: hidden;
+    }
+    .page-content {
+  flex: 1;
+  overflow-y: auto; /* Add scroll if content overflows */
+}
+  </style>

@@ -4,7 +4,8 @@ import LandingPage from '../components/LandingPage.vue';
 import BackgroundInfo from '../components/BackgroundInfo.vue';
 import PlanetPage from '../components/PlanetPage.vue';
 import PeoplePage from '../components/PeoplePage.vue';
-
+import GovernancePage from '../components/GovernancePage.vue';
+import ProsperityPage from '../components/ProsperityPage.vue';
 
 const routes = [
   {
@@ -31,6 +32,16 @@ const routes = [
     path: '/PeoplePage',
     name: 'PeoplePage',
     component: PeoplePage
+  },
+  {
+    path: '/GovernancePage',
+    name: 'GovernancePage',
+    component: GovernancePage
+  },
+  {
+    path: '/ProsperityPage',
+    name: 'ProsperityPage',
+    component: ProsperityPage
   }
 ];
 
