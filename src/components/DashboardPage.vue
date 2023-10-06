@@ -45,7 +45,8 @@
           </td>
           <td>
             <v-btn
-            color="success">
+            color="success"
+            @click="createNewReport">
               Submit New Report
             </v-btn>
           </td>
@@ -119,8 +120,14 @@ import TopBar from './TopBar.vue';
 
   export default {
     name: 'DashboardPage',
-    components: { SideNavBar, TopBar }
+    components: { SideNavBar, TopBar },
+    methods: {
+      createNewReport() {
+        this.$router.push('/BackgroundInfo');
+      }
+    }
 }
+
   </script>
   
   <style scoped>
