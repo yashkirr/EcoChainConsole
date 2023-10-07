@@ -52,7 +52,7 @@ import GovernancePage from './GovernancePage.vue';
 import ProsperityPage from './ProsperityPage.vue';
 
     export default {
-        name: 'BackgroundInfo',
+        name: 'CreateNewReport',
         components: { SideNavBar, TopBar, BackgroundInfo, PeoplePage, PlanetPage, GovernancePage, ProsperityPage },
         methods: {
       validate() {

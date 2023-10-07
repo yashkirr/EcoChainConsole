@@ -19,6 +19,11 @@ const routes = [
     component: DashboardPage
   },
   {
+    path: '/CreateNewReport',
+    name: 'CreateNewReport',
+    component: CreateNewReport
+  },
+  {
     path: '/BackgroundInfo',
     name: 'BackgroundInfo',
     component: BackgroundInfo
