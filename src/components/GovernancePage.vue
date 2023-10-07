@@ -1,9 +1,4 @@
 <template>
-    <div class = "content-wrapper">
-      <SideNavBar />
-      <div class="page-content">
-        <!-- Dashboard content goes here -->
-        <TopBar />
         <div class="table">
     <v-table>
       <thead>
@@ -52,19 +47,12 @@
         </tr>
       </tbody>
     </v-table>
-  </div>
-    
-</div>
-</div>
+  </div>    
   </template>
   
   <script>
-import SideNavBar from './SideNavBar.vue';
-import TopBar from './TopBar.vue';
-
     export default {
         name: 'GovernancePage',
-        components: { SideNavBar, TopBar },
         data() {
       return {
         allApplicable: 'false', // Set default to 'false' string
@@ -111,14 +99,5 @@ import TopBar from './TopBar.vue';
     font-weight: 400;
     line-height: 1.5rem;
   }
-    .content-wrapper {
-        display: flex;
-        height: 100vh;
-        background-color: #F1F5F9;
-        overflow: hidden;
-    }
-    .page-content {
-  flex: 1;
-  overflow-y: auto; /* Add scroll if content overflows */
-    }
+
   </style>
