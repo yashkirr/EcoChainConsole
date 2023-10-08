@@ -1,10 +1,4 @@
 <template>
-    <div class = "content-wrapper">
-      <SideNavBar />
-      <div class="page-content">
-        <v-container>
-        <TopBar />
-    </v-container>
     <v-container>
     <div class="table">
       <v-table>
@@ -53,17 +47,12 @@
       </v-table>
     </div>
 </v-container>
-</div>
-</div>
   </template>
   
   <script>
-import SideNavBar from './SideNavBar.vue';
-import TopBar from './TopBar.vue';
 
     export default {
         name: 'PlanetPage',
-        components: { SideNavBar, TopBar },
         data() {
         return {
           allApplicable: 'false', // Set default to 'false' string
@@ -115,15 +104,6 @@ import TopBar from './TopBar.vue';
       font-weight: 400;
       line-height: 1.5rem;
     }
-    .content-wrapper {
-        display: flex;
-        height: 100vh;
-        background-color: #F1F5F9;
-        overflow: hidden;
-    }
-    .page-content {
-  flex: 1;
-  overflow-y: auto; /* Add scroll if content overflows */
-    }
+  
   </style>
   

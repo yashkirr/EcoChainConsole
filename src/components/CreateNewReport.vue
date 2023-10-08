@@ -5,33 +5,46 @@
         <v-container>
         <TopBar />
         </v-container>
+        
         <v-container>
         <v-stepper 
         v-model="step" 
         :items="['Submission Information', 'People', 'Planet','Prosperity', 'Governance', 'Review']" 
         show-actions>
     <template  v-slot:item.1>
+    <div class ="table">
         <BackgroundInfo/>
+    </div>
     </template>
   
-    <template v-slot:item.2>
+    <template v-slot:items.2>
+      <div class="table">
         <PeoplePage/>
+      </div>
     </template>
   
     <template v-slot:item.3>
+      <div class="table">
         <PlanetPage/>
+      </div>
     </template>
 
     <template v-slot:item.4>
+      <div class="table">
         <GovernancePage/>
+      </div>
     </template>
 
     <template v-slot:item.5>
+      <div class="table">
         <ProsperityPage/>
+      </div>
     </template>
 
     <template v-slot:item.6>
+      <div class="table">
         <ProsperityPage/>
+      </div>
     </template>
   </v-stepper>
 </v-container>
@@ -59,6 +72,14 @@ import ProsperityPage from './ProsperityPage.vue';
   </script>
 
 <style scoped>
+    .table {
+    color: var(--Dark, #1c2434);
+    font-family: 'Abyssinica SIL', sans-serif; /* Added fallback font */
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5rem;
+  }
 .content-wrapper {
   display: flex;
   height: 100vh;
