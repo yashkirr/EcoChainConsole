@@ -19,7 +19,7 @@
         menuItems: [
         { label: 'Profile', link: '/profile' },
         { label: 'Dashboard', link: '/dashboard' },
-          { label: 'Create New Report', link: '/create-report' }
+          { label: 'Create New Report', link: '/BackgroundInfo' }
 
         ]
       };

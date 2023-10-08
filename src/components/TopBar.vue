@@ -1,5 +1,32 @@
 <template>
-    <div class="top-bar"></div>
+    <div class="top-bar">
+    
+      <v-toolbar
+      color="white"
+      dense
+      floating
+    >
+      <v-text-field
+        hide-details
+        prepend-icon="mdi-magnify"
+        single-line
+        label="Type to search"
+        
+      ></v-text-field>
+
+      <v-btn icon>
+        <v-icon>mdi-theme-light-dark</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-bell-outline</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-chat-processing-outline</v-icon>
+      </v-btn>
+    </v-toolbar>
+    </div>
   </template>
   
   <script>
