@@ -1,56 +1,61 @@
 <template>
-    <div class = "content-wrapper">
-      <SideNavBar />
-      <div class="page-content">
-        <v-container>
+  <div class="content-wrapper">
+    <SideNavBar />
+    <div class="page-content">
+      <v-container>
         <TopBar />
-        </v-container>
-        
-        <v-container>
-        <v-stepper 
-        v-model="step" 
-        :items="['Submission Information', 'People', 'Planet','Prosperity', 'Governance', 'Review']" 
-        show-actions>
-    <template  v-slot:item.1>
-    <div class ="table">
-        <BackgroundInfo/>
+      </v-container>
+
+      <v-container>
+        <v-stepper v-model="step" :items="items" show-actions>
+          <!-- Step 1: Submission Information -->
+          <template v-slot:item>
+            <div class="table" v-if="step === 1">
+              <BackgroundInfo />
+            </div>
+          </template>
+
+          <!-- Step 2: People -->
+          <template v-slot>
+            <div class="table" v-if="step === 2">
+              <PeoplePage />
+            </div>
+          </template>
+
+          <!-- Step 3: Planet -->
+          <template v-slot:item[3]>
+            <div class="table" v-if="step === 3">
+              <PlanetPage />
+            </div>
+          </template>
+
+          <!-- Step 4: Prosperity -->
+          <template v-slot:item[4]>
+            <div class="table" v-if="step === 4">
+              <ProsperityPage />
+            </div>
+          </template>
+
+          <!-- Step 5: Governance -->
+          <template v-slot:item[5]>
+            <div class="table" v-if="step === 5">
+              <GovernancePage />
+            </div>
+          </template>
+
+          <!-- Step 6: Review -->
+          <template v-slot:item[6]>
+            <div class="table" v-if="step === 6">
+              <ReviewPage />
+            </div>
+          </template>
+        </v-stepper>
+      </v-container>
     </div>
-    </template>
-  
-    <template v-slot:items.2>
-      <div class="table">
-        <PeoplePage/>
-      </div>
-    </template>
-  
-    <template v-slot:item.3>
-      <div class="table">
-        <PlanetPage/>
-      </div>
-    </template>
-
-    <template v-slot:item.4>
-      <div class="table">
-        <GovernancePage/>
-      </div>
-    </template>
-
-    <template v-slot:item.5>
-      <div class="table">
-        <ProsperityPage/>
-      </div>
-    </template>
-
-    <template v-slot:item.6>
-      <div class="table">
-        <ProsperityPage/>
-      </div>
-    </template>
-  </v-stepper>
-</v-container>
-</div>
-</div>
+  </div>
 </template>
+
+
 
 <script>
 import SideNavBar from './SideNavBar.vue';
@@ -65,7 +70,8 @@ import ProsperityPage from './ProsperityPage.vue';
         name: 'CreateNewReport',
         components: { SideNavBar, TopBar, BackgroundInfo, PeoplePage, PlanetPage, GovernancePage, ProsperityPage },
         data: () =>({
-          step: 1
+          step: 1,
+          items: ['Review Order', 'Select Shipping', 'Submit']
         })
         
     }
