@@ -12,12 +12,19 @@ import SideNavBar from './components/SideNavBar.vue';
 export default {
   name: 'App',
   components: { SideNavBar },
-  computed: {
+    
+computed: {
     showSideNavBar() {
-      // Return true if the current route is neither login nor sign up
-      return this.$route.path !== '/Landing' && this.$route.path !== '/signup';
+ 
+      // Exclude sidebar for these routes
+      const excludedRoutes = ['LandingPage', 'SignUp'];
+      return !excludedRoutes.includes(this.$route.name);
     }
   }
+
+    
+
+    
 }
 </script>
 

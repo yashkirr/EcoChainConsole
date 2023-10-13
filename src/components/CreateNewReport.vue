@@ -12,7 +12,7 @@
                 finish-button-text="Submit">
 
       <div class="form-wizard-container">
-      <TabContent title="BackgroundInfo" icon="ti-wallet">
+      <TabContent title="Submission Info" icon="ti-wallet" text-center>
           <BackgroundInfo/>
         </TabContent>
         <TabContent title="People" icon="ti-user">
@@ -28,7 +28,7 @@
           <ProsperityPage />
         </TabContent>
 
-        <TabContent title="Review and Submit" icon="ti-wallet">
+        <TabContent title="Review and Submit" icon="ti-check-box">
           <ReviewSubmitPage />
         </TabContent>
       </div>

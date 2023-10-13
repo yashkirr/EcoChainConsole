@@ -31,13 +31,15 @@
                   </a>
                 </td>
                 <td>
-                  <v-switch v-model="item.isApplicable"></v-switch>
+                  <v-switch v-model="item.isApplicable"
+                    color="#219653"></v-switch>
                 </td>
                 <td  colspan = "2">
                  <v-text-field
                 v-model="item.scoringAchieved"
                 :disabled="!item.isApplicable"
                 variant = "outlined"
+                  style=" margin-top: 16px; width = 100%"
               ></v-text-field>
                 </td>
               </tr>
