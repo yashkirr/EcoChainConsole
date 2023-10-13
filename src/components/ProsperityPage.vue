@@ -212,13 +212,10 @@ export default {
 
 <style scoped> 
 .scrollable-table {
-    max-height: 600px; /* Adjust this value to your needs */
+    max-height: 450px;
+    width: 1000px;
     overflow-y: auto;
   
-}
-
-.text-field {
-  variant: "outlined"
 }
 
 </style>

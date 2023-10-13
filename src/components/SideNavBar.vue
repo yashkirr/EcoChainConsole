@@ -1,6 +1,7 @@
 <template>
     <div class="wrapper">
       <div class="side-nav-bar">
+      <v-img src="@/assets/logo.png" alt="Company Logo" class="company-logo" style="width: 0.1px  margin-bottom: 100px;"></v-img>
         <h2 class="title"> Menu</h2>
         <ul>
           <li v-for="item in menuItems" :key="item.label">
