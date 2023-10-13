@@ -17,10 +17,10 @@
 
         <tr>
           <th>Sub section</th>
-          <th class="text-center">Metric</th>
-          <th class="text-center">Scoring</th>
-          <th class="text-center">Applicable</th>
-          <th class="text-center">Scoring achieved</th>
+          <th >Metric</th>
+          <th >Scoring</th>
+          <th>Applicable</th>
+          <th >Scoring achieved</th>
         </tr>
       </thead>
 
@@ -37,13 +37,15 @@
           <td>
           <v-switch v-model="item.isApplicable" 
            color="#219653"
-          ></v-switch>          </td>
+          ></v-switch>          
+          </td>
 
           <td>
           <v-text-field
                 v-model="item.scoringAchieved"
                 :disabled="!item.isApplicable"
                 variant = "outlined"
+                 style=" margin-top: 16px; width = 100%"
               ></v-text-field>
            
           </td>

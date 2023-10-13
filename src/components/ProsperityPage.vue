@@ -23,27 +23,28 @@
       </thead>
 
       <tbody>
-        <template v-for="(item, index) in metrics" :key="index">
+        <template v-for="(item, index) in metrics" :key="index" >
           <tr>
             <td>{{ item.name }}</td>
             <td>{{ item.Metric }}</td>
             <td>
               <a href="your_external_link_here" target="_blank">
-                <v-icon small>mdi-eye</v-icon>
+                <i class="ti-eye"></i>
                 View details and rationale
               </a>
             </td>
             <td>
-              <v-switch v-model="item.isApplicable"></v-switch>
+             <v-switch v-model="item.isApplicable"
+                    color="#219653"></v-switch>
             </td>
             <td>
-              <v-text-field
-                v-model="item.scoringAchieved"
-                
-                :disabled="!item.isApplicable || item.Metric === 'Economic Contribution'"
-
-                prepend-icon="mdi-percent"
-              ></v-text-field>
+            <v-text-field
+  v-model="item.scoringAchieved"
+  variant="outlined"
+  style="margin-left: 16px; margin-top: 16px;"
+  :disabled="!item.isApplicable || item.Metric === 'Economic Contribution'"
+></v-text-field>
+              
             </td>
           </tr>
 
@@ -52,7 +53,7 @@
             <td colspan="5">
             <!-- Revenue Section -->
 <div style="display: flex; align-items: center; margin-bottom: 16px;">
-  <h3>Cash inflows:</h3>
+  <h5>Cash inflows:</h5>
 
   <!-- Revenue Fields -->
   <v-text-field
@@ -74,7 +75,7 @@
 
 <!-- Cost Section -->
 <div style="display: flex; align-items: center;">
-  <h3>Cash outflows:</h3>
+  <h5>Cash outflows:</h5>
 
   <!-- Cost Fields -->
   <v-text-field
@@ -211,11 +212,14 @@ export default {
 
 <style scoped> 
 .scrollable-table {
-    max-height: 400px; /* Adjust this value to your needs */
+    max-height: 600px; /* Adjust this value to your needs */
     overflow-y: auto;
   
 }
 
+.text-field {
+  variant: "outlined"
+}
 
 </style>
 
