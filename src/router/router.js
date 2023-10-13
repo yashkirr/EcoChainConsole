@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import DashboardPage from '../components/DashboardPage.vue';
 import LandingPage from '../components/LandingPage.vue'; 
 import CreateNewReport from '../components/CreateNewReport.vue'; 
-
+import SignUp from '../components/SignUpForm.vue'; 
 
 const routes = [
   {
@@ -11,18 +11,20 @@ const routes = [
     component: LandingPage
   },
   {
+    path: '/SignUp',
+    name: 'SignUp',
+    component: SignUp // Corrected the component name
+  },
+  {
     path: '/dashboard',
     name: 'DashboardPage',
     component: DashboardPage
   },
-
   {
     path: '/CreateNewReport',
     name: 'CreateNewReport',
     component: CreateNewReport
   }
-
-
 ];
 
 const router = createRouter({

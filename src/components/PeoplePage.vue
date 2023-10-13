@@ -17,11 +17,11 @@
           </tr>
   
           <tr>
-            <th class="text-center">Sub section</th>
-            <th class="text-center">Metric</th>
-            <th class="text-center">Scoring</th>
-            <th class="text-center">Applicable</th>
-            <th class="text-center">Scoring achieved</th>
+            <th class="text-left">Sub section</th>
+            <th class="text-left">Metric</th>
+            <th class="text-left">Scoring</th>
+            <th class="text-left">Applicable</th>
+            <th class="text-left">Scoring achieved</th>
           </tr>
         </thead>
         <tbody>
@@ -45,6 +45,7 @@
                 v-model="item.scoringAchieved"
                 :disabled="!item.isApplicable"
                 variant = "outlined"
+                  style="margin-left: 16px; margin-top: 16px;"
               ></v-text-field>
             </td>
           </tr>
