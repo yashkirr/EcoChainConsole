@@ -1,7 +1,7 @@
 <template>
 
     <div class="table">
-      <v-table>
+     <v-table class = "scrollable-table">
         <thead>
           <tr>
            
@@ -104,7 +104,13 @@
 
 
 <style scoped>
-
+.scrollable-table {
+   max-height: 500px; /* Adjust this value to your needs */
+    width: 1000px;
+    
+    overflow-y: auto;
+  
+}
 
 </style>
 

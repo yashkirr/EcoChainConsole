@@ -61,10 +61,13 @@ export default {
     ReviewSubmitPage
   },
   methods: {
-    onComplete() {
-      alert("Yay. Done!");
-    },
+  onComplete() {
+    this.$router.push({ name: 'SuccessPage' }); // Using named route
+    // or
+    // this.$router.push('/SuccessPage'); // Using path directly
   },
+},
+ 
 };
 </script>
 

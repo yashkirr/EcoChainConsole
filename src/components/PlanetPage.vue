@@ -1,6 +1,6 @@
 <template>
  <div class="table">
-          <v-table>
+          <v-table class = "scrollable-table">
             <thead>
                <tr>
                  <td colspan="3" class="text-left text-no-wrap">
@@ -98,7 +98,13 @@
   <style scoped>
   @import url("https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css");
 
-
+.scrollable-table {
+   max-height: 500px; /* Adjust this value to your needs */
+    width: 1000px;
+    
+    overflow-y: auto;
+  
+}
 
   </style>
   
