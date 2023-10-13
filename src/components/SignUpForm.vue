@@ -103,7 +103,6 @@
 
 <script>
     import Authbranding from './AuthBranding.vue';
-    import { useRouter } from 'vue-router'; 
     
     export default {
       data() {
