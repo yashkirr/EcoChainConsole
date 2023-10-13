@@ -3,6 +3,8 @@ import DashboardPage from '../components/DashboardPage.vue';
 import LandingPage from '../components/LandingPage.vue'; 
 import CreateNewReport from '../components/CreateNewReport.vue'; 
 import SignUp from '../components/SignUpForm.vue'; 
+import SuccessPage from  '../components/SuccessPage.vue'; 
+
 
 const routes = [
   {
@@ -24,7 +26,20 @@ const routes = [
     path: '/CreateNewReport',
     name: 'CreateNewReport',
     component: CreateNewReport
-  }
+  },
+
+  {
+    path: '/SuccessPage',
+    name: 'SuccessPage',
+    component: SuccessPage
+  },
+
+
+  
+
+
+
+
 ];
 
 const router = createRouter({
