@@ -1,58 +1,56 @@
 <template>
-    <v-container>
-    <div class="table">
-      <v-table>
-        <thead>
-          <tr>
-            <td colspan="4">
-              Complete the sub sections below by inputting the scoring achieved
-              for each metric
-            </td>
-            <td>
-              <input type="radio" v-model="allApplicable" value="true" />
-              Mark entire category as not applicable
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <th class="text-left">Sub section</th>
-            <th class="text-left">Metric</th>
-            <th class="text-left">Scoring</th>
-            <th class="text-left">Applicable</th>
-            <th class="text-left">Scoring achieved</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in metrics" :key="item.name">
-            <td>{{ item.name }}</td>
-            <td>{{ item.Metric }}</td>
-            <td>
-              <a href="your_external_link_here" target="_blank">
-                <v-icon small>mdi-eye</v-icon>
-                View details and rationale
-              </a>
-            </td>
-            <td>
-              <v-switch v-model="item.isApplicable"></v-switch>
-            </td>
-            <td>
-              <v-text-field
+ <div class="table">
+          <v-table>
+            <thead>
+               <tr>
+                 <td colspan="3" class="text-left text-no-wrap">
+                  Complete the sub sections below by inputting the scoring achieved for each metric
+                </td>
+                 <td colspan = "2" class="text-left">
+                  <input type="radio" v-model="allApplicable" value="true" />
+                  Mark entire category as not applicable
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <th class="text-left">Sub section</th>
+                <th class="text-left">Metric</th>
+                <th class="text-left">Scoring</th>
+                <th class="text-left">Applicable</th>
+                <th class="text-left">Scoring achieved</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="item in metrics" :key="item.name">
+                <td>{{ item.name }}</td>
+                <td>{{ item.Metric }}</td>
+                <td>
+                  <a href="your_external_link_here" target="_blank">
+                     <i class="ti-eye"></i>
+                    View details and rationale
+                  </a>
+                </td>
+                <td>
+                  <v-switch v-model="item.isApplicable"></v-switch>
+                </td>
+                <td  colspan = "2">
+                 <v-text-field
                 v-model="item.scoringAchieved"
                 :disabled="!item.isApplicable"
-                prepend-icon="mdi-percent"
+                variant = "outlined"
               ></v-text-field>
-            </td>
-          </tr>
-        </tbody>
-      </v-table>
-    </div>
-</v-container>
-  </template>
+                </td>
+              </tr>
+            </tbody>
+          </v-table>
+  </div>
+</template>
   
   <script>
 
     export default {
         name: 'PlanetPage',
+      
         data() {
         return {
           allApplicable: 'false', // Set default to 'false' string
@@ -96,14 +94,9 @@
   </script>
   
   <style scoped>
-    .table {
-      color: var(--Dark, #1c2434);
-      font-family: 'Abyssinica SIL', sans-serif; /* Added fallback font */
-      font-size: 1rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 1.5rem;
-    }
-  
+  @import url("https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css");
+
+
+
   </style>
   

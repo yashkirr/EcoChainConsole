@@ -1,118 +1,95 @@
 <template>
-            <v-table>
-                <thead>
-                    <tr>
-                        <td colspan="3">
-                            <h1>Submission Information</h1>
-                        </td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <v-text-field
-                             v-model="firstname"
-                             :rules="nameRules"
-                             :counter="10"
-                             label="First name"
-                             required
-                             hide-details>
-                            </v-text-field>
-                        </td>
-                        <td>
-                            <v-text-field
-                            v-model="lastname"
-                            :rules="nameRules"
-                            :counter="10"
-                            label="Last name"
-                            hide-details
-                            required></v-text-field>
-                        </td>
-                        <td>
-                            <v-text-field
-                            v-model="email"
-                            :rules="emailRules"
-                            label="E-mail"
-                            hide-details
-                            required></v-text-field>
-                        </td>
-                    </tr><br>
-                    <tr>
-                        <td>
-                            <v-autocomplete
-                            ref="country"
-                            v-model="country"
-                            :rules="[() => !!country || 'This field is required']"
-                            :items="countries"
-                            label="dd/mm/yyyy"
-                            placeholder="Select..."
-                            required></v-autocomplete>
-                        </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </v-table>    
-            <v-table>    
-            <v-checkbox
-            v-model="checkbox"
-            :rules="[v => !!v || 'You must agree to continue!']"
-            label="I hereby confirm that all metric scores provided are true and correct. In the case that audit findings reflect misconduct in this submission, I accept full responsibility for non-compliant 
-reporting"
-            required
-      ></v-checkbox>
-      <v-sheet width="300" class="mx-auto">
-        <v-btn
-          color="success"
-          class="mt-4"
-          block
-          @click="validate"
-        >
-          Save and Continue
-        </v-btn>
-    </v-sheet>    
-</v-table>
+  <v-container>
+
+    <v-form>
+    <v-row>
+  <v-col cols="12" sm="3">
+
+      <label>First Name </label>
+      <v-text-field
+        v-model="firstName"
+        placeholder="Enter your first name"
+        variant = "outlined" 
+        required
+      ></v-text-field>
+      </v-col>
+  
+ <v-col cols="12" sm="3">
+      <label>Last Name </label>
+      <v-text-field
+        v-model="lastName"
+         placeholder="Enter your last name"
+         variant = "outlined" 
+        required
+      ></v-text-field>
+       </v-col>
+
+<v-col cols="12" sm="6">
+      <label>Email </label>
+      <v-text-field
+        v-model="email"
+         placeholder="Enter your  work email"
+         variant = "outlined" 
+        :rules="emailRules"
+        required
+      ></v-text-field>
+</v-col>
+</v-row>
+
+      <p>Please select your reporting period</p>
+
+      <label>Start Date</label>
+      <v-text-field v-model="startDate" type="date"  variant = "outlined" ></v-text-field>
+
+      <label>End Date</label>
+      <v-text-field v-model="endDate" 
+       type="date"  variant = "outlined" 
+    
+       >
+       </v-text-field >
+
+      <v-checkbox v-model="checkbox">
+        <template v-slot:label>
+          <div>
+            I hereby confirm that all metric scores provided are true and correct. In the case that audit findings reflect misconduct in this submission, I accept full responsibility for non-compliant reporting.
+          </div>
+        </template>
+      </v-checkbox>
+       
+    
+    </v-form>
+
+  </v-container>
 </template>
 
 
 <script>
-
-    export default {
-        name: 'BackgroundInfo',
-        methods: {
-      validate() {
-        this.$router.push('/PeoplePage');
-      }
-      },
-        data: () => ({
-        valid: false,
-        firstname: '',
-        lastname: '',
-        nameRules: [
-          value => {
-            if (value) return true
-  
-            return 'Name is required.'
-          },
-          value => {
-            if (value?.length <= 10) return true
-  
-            return 'Name must be less than 10 characters.'
-          },
-        ],
-        email: '',
-        emailRules: [
-          value => {
-            if (value) return true
-  
-            return 'E-mail is requred.'
-          },
-          value => {
-            if (/.+@.+\..+/.test(value)) return true
-  
-            return 'E-mail must be valid.'
-          },
-        ],
-      }),
+export default {
+  data() {
+    return {
+      firstName: '',
+      lastName: '',
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
+      startDate: null,
+      endDate: null,
+      checkbox: false,
+    };
+  },
+  methods: {
+    submitForm() {
+      console.log('Form Submitted!', {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        startDate: this.startDate,
+        endDate: this.endDate
+      });
     }
-  </script>
+  }
+};
+</script>
+

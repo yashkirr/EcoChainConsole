@@ -3,12 +3,12 @@
     <v-table>
       <thead>
         <tr>
-          <td colspan="4">
+           <td colspan="3" class="text-left text-no-wrap">
             Complete the sub sections below by inputting the scoring achieved
             for each metric
           </td>
 
-          <td>
+           <td colspan = "2" class="text-left">
             <input type="radio" v-model="allApplicable" value="true" />
             Mark entire category as not applicable
           </td>
@@ -16,11 +16,11 @@
         </tr>
 
         <tr>
-          <th class="text-left">Sub section</th>
-          <th class="text-left">Metric</th>
-          <th class="text-left">Scoring</th>
-          <th class="text-left">Applicable</th>
-          <th class="text-left">Scoring achieved</th>
+          <th>Sub section</th>
+          <th class="text-center">Metric</th>
+          <th class="text-center">Scoring</th>
+          <th class="text-center">Applicable</th>
+          <th class="text-center">Scoring achieved</th>
         </tr>
       </thead>
 
@@ -30,19 +30,22 @@
           <td>{{ item.Metric }}</td>
           <td>
             <a href="your_external_link_here" target="_blank">
-              <v-icon small>mdi-eye</v-icon>
+               <i class="ti-eye"></i>
               View details and rationale
             </a>
           </td>
           <td>
-            <v-switch v-model="item.isApplicable"></v-switch>
-          </td>
+          <v-switch v-model="item.isApplicable" 
+           color="#219653"
+          ></v-switch>          </td>
+
           <td>
-            <v-text-field
-              v-model="item.scoringAchieved"
-              :disabled="!item.isApplicable"
-              prepend-icon="mdi-percent"
-            ></v-text-field>
+          <v-text-field
+                v-model="item.scoringAchieved"
+                :disabled="!item.isApplicable"
+                variant = "outlined"
+              ></v-text-field>
+           
           </td>
         </tr>
       </tbody>
@@ -55,6 +58,7 @@
         name: 'GovernancePage',
         data() {
       return {
+        economicMenu: false,
         allApplicable: 'false', // Set default to 'false' string
         metrics: [
           {
@@ -79,25 +83,20 @@
         ],
       }
     },
-
     watch: {
-      // Use watch to detect when allApplicable changes
-      allApplicable(newValue) {
-        const applicable = newValue === 'false'
-        this.metrics.forEach(item => (item.isApplicable = applicable))
+        // Use watch to detect when allApplicable changes
+        allApplicable(newValue) {
+          const applicable = newValue === 'false'
+          this.metrics.forEach(item => (item.isApplicable = applicable))
+        },
       },
-    },
+
+   
   }
   </script>
   
   <style scoped>
-    .table {
-    color: var(--Dark, #1c2434);
-    font-family: 'Abyssinica SIL', sans-serif; /* Added fallback font */
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1.5rem;
-  }
+
+
 
   </style>

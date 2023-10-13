@@ -1,10 +1,8 @@
 <template>
     <div class = "content-wrapper">
-      <SideNavBar />
+     
       <div class="page-content">
-        <v-container>
-        <TopBar />
-      </v-container>
+      
       <v-container>
       
         <v-table>
@@ -115,12 +113,12 @@
   </template>
   
   <script>
-import SideNavBar from './SideNavBar.vue';
-import TopBar from './TopBar.vue';
+
+
 
   export default {
     name: 'DashboardPage',
-    components: { SideNavBar, TopBar },
+
     methods: {
       createNewReport() {
         this.$router.push('/BackgroundInfo');
@@ -132,31 +130,6 @@ import TopBar from './TopBar.vue';
   
   <style scoped>
 
-.dashboard {
-  color: var(--Dark, #1c2434);
-  font-family: 'Abyssinica SIL', sans-serif; /* Added fallback font */
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2rem;
-  background-color: white;
-  text-align: left;
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-}
-.content-wrapper {
-  display: flex;
-  height: 100vh;
-  background-color: #F1F5F9;
-  overflow: hidden;
-}
-
-.page-content {
-  flex: 1;
-  overflow-y: auto; /* Add scroll if content overflows */
-  text-align: left;
-}
 </style>
 
   

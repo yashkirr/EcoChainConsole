@@ -1,13 +1,6 @@
 <template>
-    <div class = "content-wrapper">
-      <SideNavBar />
-      <div class="page-content">
-        <v-container>
-        <TopBar />
-    </v-container>
-       <v-container>
-        <div class="table">
-    <v-table>
+   
+    <v-table  class="scrollable-table">
       <thead>
         <tr>
           <td colspan="4">
@@ -20,85 +13,108 @@
           </td>
           <td></td>
         </tr>
-        <tr>
-          <th class="text-left">Sub section</th>
-          <th class="text-left">Metric</th>
-          <th class="text-left">Scoring</th>
-          <th class="text-left">Applicable</th>
-          <th class="text-left">Scoring achieved</th>
+        <tr >
+          <th class="text-center">Sub section</th>
+          <th class="text-center">Metric</th>
+          <th class="text-center">Scoring</th>
+          <th class="text-center">Applicable</th>
+          <th class="text-center">Scoring achieved</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr v-for="item in metrics" :key="item.name">
-          <td>{{ item.name }}</td>
-          <td>{{ item.Metric }}</td>
-          <td>
-            <a href="your_external_link_here" target="_blank">
-              <v-icon small>mdi-eye</v-icon>
-              View details and rationale
-            </a>
-          </td>
-          <td>
-            <v-switch v-model="item.isApplicable"></v-switch>
-          </td>
-          <td>
-            <v-text-field
-              v-model="item.scoringAchieved"
-              :disabled="!item.isApplicable"
-              prepend-icon="mdi-percent"
-            ></v-text-field>
-          </td>
-        </tr>
+        <template v-for="(item, index) in metrics" :key="index">
+          <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.Metric }}</td>
+            <td>
+              <a href="your_external_link_here" target="_blank">
+                <v-icon small>mdi-eye</v-icon>
+                View details and rationale
+              </a>
+            </td>
+            <td>
+              <v-switch v-model="item.isApplicable"></v-switch>
+            </td>
+            <td>
+              <v-text-field
+                v-model="item.scoringAchieved"
+                
+                :disabled="!item.isApplicable || item.Metric === 'Economic Contribution'"
 
-        <!-- Economic Contribution details -->
-        <tr v-if="isEconomicContributionEnabled">
-          <td colspan="5">
-            <!-- Revenue Fields -->
-            <v-text-field
-              v-model="revenueSources.Revenue"
-              label="Revenue"
-              prepend-icon="mdi-cash"
-            ></v-text-field>
-            <v-text-field
-              v-model="revenueSources.GovernmentAssistance"
-              label="Government Assistance"
-              prepend-icon="mdi-cash"
-            ></v-text-field>
-            <!-- Cost Fields -->
-            <v-text-field
-              v-model="costs.CapitalPayments"
-              label="Capital Payments"
-              prepend-icon="mdi-cash"
-            ></v-text-field>
-            <v-text-field
-              v-model="costs.GovernmentPayments"
-              label="Government Payments"
-              prepend-icon="mdi-cash"
-            ></v-text-field>
-            <v-text-field
-              v-model="costs.CommunityInvestment"
-              label="Community Investment"
-              prepend-icon="mdi-cash"
-            ></v-text-field>
-          </td>
-        </tr>
+                prepend-icon="mdi-percent"
+              ></v-text-field>
+            </td>
+          </tr>
+
+          <!-- Economic Contribution details -->
+          <tr v-if="item.Metric === 'Economic Contribution' && isEconomicContributionEnabled">
+            <td colspan="5">
+            <!-- Revenue Section -->
+<div style="display: flex; align-items: center; margin-bottom: 16px;">
+  <h3>Cash inflows:</h3>
+
+  <!-- Revenue Fields -->
+  <v-text-field
+    v-model="revenueSources.Revenue"
+    variant="outlined" 
+    placeholder="Revenue(+)"
+    style="margin-top: 18px; margin-left: 16px;"
+
+  ></v-text-field>
+
+  <v-text-field
+    v-model="revenueSources.GovernmentAssistance"
+    variant="outlined" 
+    placeholder="Government Assistance(+)"
+    style="margin-top: 18px; margin-left: 16px;"
+
+  ></v-text-field>
+</div>
+
+<!-- Cost Section -->
+<div style="display: flex; align-items: center;">
+  <h3>Cash outflows:</h3>
+
+  <!-- Cost Fields -->
+  <v-text-field
+    v-model="costs.CapitalPayments"
+    variant="outlined" 
+    placeholder="Capital Payments (-)"
+    style="margin-left: 16px;"
+  ></v-text-field>
+
+  <v-text-field
+    v-model="costs.GovernmentPayments"
+    variant="outlined" 
+    placeholder="Government Payments(-)"
+    style="margin-left: 16px;"
+  ></v-text-field>
+
+  <v-text-field
+    v-model="costs.CommunityInvestment"
+    variant="outlined" 
+    placeholder="Community Investment(-)"
+    style="margin-left: 16px;"
+  ></v-text-field>
+</div>
+ </td >
+
+          </tr>
+        </template>
       </tbody>
     </v-table>
-  </div>
-</v-container>
-</div>
-</div>
-  </template>
-  
-  <script>
-import SideNavBar from './SideNavBar.vue';
-import TopBar from './TopBar.vue';
 
-    export default {
-        name: 'ProsperityPage',
-        components: { SideNavBar, TopBar },
-        data() {
+</template>
+
+
+
+
+
+<script>
+export default {
+    name: 'ProsperityPage',
+    data() {
       return {
         allApplicable: 'false',
         metrics: [
@@ -154,35 +170,53 @@ import TopBar from './TopBar.vue';
           GovernmentPayments: '',
           CommunityInvestment: '',
         },
+      };
+    },
+      computed: {
+    economicContribution() {
+      const revenue = parseFloat(this.revenueSources.Revenue) || 0;
+      const govAssistance = parseFloat(this.revenueSources.GovernmentAssistance) || 0;
+      const capPayments = parseFloat(this.costs.CapitalPayments) || 0;
+      const govPayments = parseFloat(this.costs.GovernmentPayments) || 0;
+      const communityInvestment = parseFloat(this.costs.CommunityInvestment) || 0;
+
+      return revenue + govAssistance - (capPayments + govPayments + communityInvestment);
+    },
+
+    isEconomicContributionEnabled() {
+      return this.metrics.some(
+        item => item.Metric === 'Economic Contribution' && item.isApplicable
+      );
+    },
+  },
+
+  watch: {
+    economicContribution(newValue) {
+      const econContributionMetric = this.metrics.find(item => item.Metric === 'Economic Contribution');
+      if (econContributionMetric) {
+        econContributionMetric.scoringAchieved = newValue.toFixed(2); // Rounded to 2 decimal places
       }
     },
-    computed: {
-      isEconomicContributionEnabled() {
-        return this.metrics.some(
-          item => item.Metric === 'Economic Contribution' && item.isApplicable
-        )
-      },
-    },
-  }
-</script>
+
+        allApplicable(newValue) {
+          const applicable = newValue === 'false'
+          this.metrics.forEach(item => (item.isApplicable = applicable))
   
-  <style scoped>
-    .table {
-      color: var(--Dark, #1c2434);
-      font-family: 'Abyssinica SIL', sans-serif; /* Added fallback font */
-      font-size: 1rem;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 1.5rem;
-    }
-    .content-wrapper {
-        display: flex;
-        height: 100vh;
-        background-color: #F1F5F9;
-        overflow: hidden;
-    }
-    .page-content {
-  flex: 1;
-  overflow-y: auto; /* Add scroll if content overflows */
-    }
-  </style>
+      },
+  },
+
+  
+}
+</script>
+
+<style scoped> 
+.scrollable-table {
+    max-height: 400px; /* Adjust this value to your needs */
+    overflow-y: auto;
+  
+}
+
+
+</style>
+
+
