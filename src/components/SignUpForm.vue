@@ -176,7 +176,7 @@
 }
 
 .auth-heading {
-  margin-bottom: 20px;
+  margin-top: 40px;
   text-align: left;
   font-family: 'Abyssinica SIL', sans-serif;
 

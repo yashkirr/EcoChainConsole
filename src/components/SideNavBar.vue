@@ -1,32 +1,34 @@
 <template>
-    <div class="wrapper">
-      <div class="side-nav-bar">
+  <div class="wrapper">
+    <div class="side-nav-bar">
       <v-img src="@/assets/logo.png" alt="Company Logo" class="company-logo" style="width: 0.1px  margin-bottom: 100px;"></v-img>
-        <h2 class="title"> Menu</h2>
-        <ul>
-          <li v-for="item in menuItems" :key="item.label">
-            <a :href="item.link">{{ item.label }}</a>
-          </li>
-        </ul>
-      </div>
+      <h3 class="title"> MENU</h3>
+      <ul>
+        <li v-for="item in menuItems" :key="item.label">
+          <a :href="item.link">
+            <i :class="`ti-${item.icon}`"></i> {{ item.label }}
+          </a>
+        </li>
+      </ul>
     </div>
-  </template>
+  </div>
+</template>
   
-  <script>
-  export default {
-    name: 'SideNavBar',
-    data() {
-      return {
-        menuItems: [
-        { label: 'Profile', link: '/profile' },
-        { label: 'Dashboard', link: '/dashboard' },
-          { label: 'Create New Report', link: '/CreateNewReport' }
+<script>
+export default {
+  name: 'SideNavBar',
+  data() {
+    return {
+      menuItems: [
+        { label: 'Dashboard', link: '/dashboard', icon: 'layout-grid2' },
+        { label: 'Create New Report', link: '/CreateNewReport', icon: 'clipboard' },
+        { label: 'Profile', link: '/profile', icon: 'user' }
+      ]
+    };
+  }
+};
+</script>
 
-        ]
-      };
-    }
-  };
-  </script>
   
   <style scoped>
   /* Wrapper styles */
@@ -41,8 +43,7 @@
     width: 100%;
     background-color: #1C2434;
     color: #ffffff;
-    padding: 10px;
-    border-right: 1px solid #ccc;
+    padding: 15px;
     height: 100%; /* Full height of the wrapper */
   }
   .side-nav-bar ul {
@@ -55,10 +56,9 @@
   }
   .side-nav-bar li {
     /* left justify text */
-    text-align: left;
     margin: 10px 0;
     /* apply padding to center text in the bar */
-    padding-left: 25px;
+    padding-left: 15px;
   }
   .side-nav-bar a {
     color: #ffffff;
@@ -80,7 +80,7 @@
     text-align: left;
     margin: 10px 0;
     /* apply padding to center text in the bar */
-    padding-left: 25px;
+    padding-left: 20px;
   }
   </style>
   

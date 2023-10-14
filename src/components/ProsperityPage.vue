@@ -180,7 +180,6 @@ export default {
       const capPayments = parseFloat(this.costs.CapitalPayments) || 0;
       const govPayments = parseFloat(this.costs.GovernmentPayments) || 0;
       const communityInvestment = parseFloat(this.costs.CommunityInvestment) || 0;
-
       return revenue + govAssistance - (capPayments + govPayments + communityInvestment);
     },
 
@@ -212,11 +211,12 @@ export default {
 
 <style scoped> 
 .scrollable-table {
-    max-height: 450px;
+    max-height: 400px;
     width: 1000px;
     overflow-y: auto;
   
 }
+
 
 </style>
 
