@@ -9,6 +9,7 @@
 				<ul>
 					<li v-for="item in menuItems" :key="item.label">
 						<a :href="item.link" @click.prevent="handleMenuClick(item)">
+							<i :class="item.icon"></i>
 							{{ item.label }}
 						</a>
 					</li>
@@ -27,9 +28,9 @@ export default {
 	data() {
 		return {
 			menuItems: [
-				{ label: 'Dashboard', link: '/dashboard' },
-				{ label: 'Create New Report', link: '/CreateNewReport' },
-				{ label: 'Log Out', link: '/', action: this.logout }
+				{ label: 'Dashboard', link: '/dashboard', icon: 'ti-layout-grid2'},
+				{ label: 'Create New Report', link: '/CreateNewReport', icon: 'ti-notepad' },
+				{ label: 'Log Out', link: '/', action: this.logout, icon: 'ti-back-left'}
 
 			]
 		};
