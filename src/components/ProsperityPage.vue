@@ -34,8 +34,13 @@
               </a>
             </td>
             <td>
-             <v-switch v-model="item.isApplicable"
-                    color="#219653"></v-switch>
+              <v-switch 
+    v-model="item.isApplicable" 
+    @change="handleSwitchChange(item, index)" 
+    color="#219653">
+</v-switch>
+
+             
             </td>
             <td>
               <v-text-field
@@ -51,7 +56,7 @@
 </v-text-field>
 
 
-  
+
               
             </td>
           </tr>
@@ -216,6 +221,14 @@ export default {
   
       },
   },
+
+  methods: {
+    handleSwitchChange(item, index) {
+        if (!item.isApplicable) {
+            this.metrics[index].scoringAchieved = '';
+        }
+    }
+}
 
   
 }
