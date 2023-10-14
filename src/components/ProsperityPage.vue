@@ -34,16 +34,29 @@
               </a>
             </td>
             <td>
-             <v-switch v-model="item.isApplicable"
-                    color="#219653"></v-switch>
+              <v-switch 
+    v-model="item.isApplicable" 
+    @change="handleSwitchChange(item, index)" 
+    color="#219653">
+</v-switch>
+
+             
             </td>
             <td>
-            <v-text-field
+              <v-text-field
   v-model="item.scoringAchieved"
   variant="outlined"
   style="margin-left: 16px; margin-top: 16px;"
   :disabled="!item.isApplicable || item.Metric === 'Economic Contribution'"
-></v-text-field>
+>
+<template v-slot:prepend>
+    <span>#</span>
+  </template>
+  
+</v-text-field>
+
+
+
               
             </td>
           </tr>
@@ -181,13 +194,17 @@ export default {
       const govPayments = parseFloat(this.costs.GovernmentPayments) || 0;
       const communityInvestment = parseFloat(this.costs.CommunityInvestment) || 0;
       return revenue + govAssistance - (capPayments + govPayments + communityInvestment);
+      
     },
+   
 
     isEconomicContributionEnabled() {
       return this.metrics.some(
         item => item.Metric === 'Economic Contribution' && item.isApplicable
       );
     },
+
+  
   },
 
   watch: {
@@ -204,6 +221,14 @@ export default {
   
       },
   },
+
+  methods: {
+    handleSwitchChange(item, index) {
+        if (!item.isApplicable) {
+            this.metrics[index].scoringAchieved = '';
+        }
+    }
+}
 
   
 }
