@@ -41,12 +41,19 @@
               ></v-switch>
             </td>
             <td >
-              <v-text-field
-                v-model="item.scoringAchieved"
-                :disabled="!item.isApplicable"
-                variant = "outlined"
-                  style="margin-left: 16px; margin-top: 16px;"
-              ></v-text-field>
+
+            <v-text-field
+  v-model="item.scoringAchieved"
+  :disabled="!item.isApplicable"
+  variant="outlined"
+  style="margin-left: 16px; margin-top: 16px;"
+>
+  <template v-slot:prepend>
+    <span>%</span>
+  </template>
+</v-text-field>
+      
+             
             </td>
           </tr>
         </tbody>
@@ -105,7 +112,7 @@
 
 <style scoped>
 .scrollable-table {
-   max-height: 500px; /* Adjust this value to your needs */
+   max-height: 400px; /* Adjust this value to your needs */
     width: 1000px;
     
     overflow-y: auto;

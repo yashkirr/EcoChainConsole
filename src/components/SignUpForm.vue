@@ -168,9 +168,9 @@ export default {
 }
 
 .auth-heading {
-	margin-bottom: 20px;
-	text-align: left;
-	font-family: 'Abyssinica SIL', sans-serif;
+  margin-top: 40px;
+  text-align: left;
+  font-family: 'Abyssinica SIL', sans-serif;
 
 
 }
