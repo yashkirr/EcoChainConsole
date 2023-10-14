@@ -38,12 +38,20 @@
                     color="#219653"></v-switch>
             </td>
             <td>
-            <v-text-field
+              <v-text-field
   v-model="item.scoringAchieved"
   variant="outlined"
   style="margin-left: 16px; margin-top: 16px;"
   :disabled="!item.isApplicable || item.Metric === 'Economic Contribution'"
-></v-text-field>
+>
+<template v-slot:prepend>
+    <span>#</span>
+  </template>
+  
+</v-text-field>
+
+
+  
               
             </td>
           </tr>
@@ -180,15 +188,18 @@ export default {
       const capPayments = parseFloat(this.costs.CapitalPayments) || 0;
       const govPayments = parseFloat(this.costs.GovernmentPayments) || 0;
       const communityInvestment = parseFloat(this.costs.CommunityInvestment) || 0;
-
       return revenue + govAssistance - (capPayments + govPayments + communityInvestment);
+      
     },
+   
 
     isEconomicContributionEnabled() {
       return this.metrics.some(
         item => item.Metric === 'Economic Contribution' && item.isApplicable
       );
     },
+
+  
   },
 
   watch: {
@@ -212,11 +223,12 @@ export default {
 
 <style scoped> 
 .scrollable-table {
-    max-height: 450px;
+    max-height: 400px;
     width: 1000px;
     overflow-y: auto;
   
 }
+
 
 </style>
 

@@ -68,7 +68,8 @@
 
 <script>
 import Authbranding from './AuthBranding.vue';
-
+import axios from 'axios';
+import config from './config';
 
 export default {
   components: { Authbranding },
@@ -93,13 +94,28 @@ export default {
     };
   },
     methods: {
-      submitForm() {
-        if (this.valid) {
-          console.log('Form is valid, proceed with submission')
-        } else {
-          console.log('Form is not valid')
-        }
-      },
+        async submitForm() {
+            if (this.valid) {
+                try {
+                    const response = await axios.post(config.backendApiUrl.concat("/login"), {
+                        email: this.email,
+                        password: this.password,
+                    });
+                    console.log('Response from backend:', response.data);
+
+                    if (response.data.success) {
+                        console.log("Attempting redirect...")
+                        this.$router.push('/dashboard');
+                    } else {
+                        console.error('Login failed:', response.data.message);
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                }
+            } else {
+                console.log('Form is not valid');
+            }
+        },
     },
   }
  

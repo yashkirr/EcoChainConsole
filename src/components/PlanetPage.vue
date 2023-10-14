@@ -21,7 +21,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="item in metrics" :key="item.name">
+              <tr v-for="(item,index) in metrics" :key="item.name">
                 <td>{{ item.name }}</td>
                 <td>{{ item.Metric }}</td>
                 <td>
@@ -34,14 +34,21 @@
                   <v-switch v-model="item.isApplicable"
                     color="#219653"></v-switch>
                 </td>
-                <td  colspan = "2">
-                 <v-text-field
-                v-model="item.scoringAchieved"
-                :disabled="!item.isApplicable"
-                variant = "outlined"
-                  style=" margin-top: 16px; width = 100%"
-              ></v-text-field>
-                </td>
+                 <td>
+                        <v-text-field
+                            v-model="item.scoringAchieved"
+                            :disabled="!item.isApplicable"
+                            variant="outlined"
+                            style="margin-top: 16px; width: 100%;"
+                        >
+                            <template v-slot:prepend>
+                                <span>{{ prependValues[index] }}</span>
+                            </template>
+                        </v-text-field>
+                    </td>
+
+
+               
               </tr>
             </tbody>
           </v-table>
@@ -85,6 +92,12 @@
           ],
         }
       },
+
+       computed: {
+        prependValues() {
+            return this.metrics.map((_, index) => (index === 1  ? '%' : '#'));
+        }
+    },
       watch: {
         // Use watch to detect when allApplicable changes
         allApplicable(newValue) {
@@ -99,7 +112,7 @@
   @import url("https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css");
 
 .scrollable-table {
-   max-height: 500px; /* Adjust this value to your needs */
+   max-height: 400px; /* Adjust this value to your needs */
     width: 1000px;
     
     overflow-y: auto;
