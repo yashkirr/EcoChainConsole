@@ -45,7 +45,7 @@
             <v-btn
             color="success"
             @click="createNewReport">
-              Submit New Report
+              New Report
             </v-btn>
           </td>
         </tr>
@@ -121,7 +121,7 @@
 
     methods: {
       createNewReport() {
-        this.$router.push('/BackgroundInfo');
+        this.$router.push('/CreateNewReport');
       }
     }
 }
