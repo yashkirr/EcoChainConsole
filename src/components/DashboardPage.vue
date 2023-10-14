@@ -132,7 +132,13 @@ export default {
 	methods: {
 		async fetchDashboardData() {
 			try {
-				const response = await axios.get(config.backendApiUrl.concat("/get_dashboard"), { withCredentials: true });
+				const token = localStorage.getItem('access_token');
+				const headers = {
+					'Authorization': 'Bearer ' + token
+				};
+
+				const response = await axios.get(config.backendApiUrl.concat("/get_dashboard"), { headers: headers });
+
 				if (response.data.success) {
 					this.name = response.data.name;
 					this.email = response.data.email;
