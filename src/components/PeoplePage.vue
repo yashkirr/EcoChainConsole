@@ -94,6 +94,17 @@ export default {
           }
       }
   },
+  computed: {
+    sectionStatus() {
+      if (this.metrics.every(item => item.isApplicable)) {
+        return 'Complete';
+      } else if (this.metrics.every(item => !item.isApplicable)) {
+        return 'Not Applicable';
+      } else {
+        return 'Partial';
+      }
+    },
+  },
   watch: {
       allApplicable(newValue) {
           this.metrics.forEach(item => (item.isApplicable = !newValue));
