@@ -17,7 +17,7 @@ computed: {
     showSideNavBar() {
  
       // Exclude sidebar for these routes
-      const excludedRoutes = ['LandingPage', 'SignUp'];
+      const excludedRoutes = ['LandingPage', 'SignUp', 'OrganisationForm'];
       return !excludedRoutes.includes(this.$route.name);
     }
   }

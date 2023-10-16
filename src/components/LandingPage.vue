@@ -86,7 +86,7 @@ export default {
 					console.log('Response from backend:', response.data);
 
 					// If the response contains an access token, we assume login was successful
-					if (response.data.access_token) {
+					if (response.data.success) {
 						localStorage.setItem('access_token', response.data.access_token);
 						console.log("Attempting redirect...");
 						this.$router.push('/dashboard');

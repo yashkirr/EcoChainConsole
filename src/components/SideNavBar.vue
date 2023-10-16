@@ -20,8 +20,6 @@
 </template>
   
 <script>
-import axios from 'axios';
-import config from './config';
 
 export default {
 	name: 'SideNavBar',
@@ -38,15 +36,8 @@ export default {
 	methods: {
 		logout() {
 			// Assuming you have an endpoint like '/logout' to handle logouts on your backend
-			axios.post(config.backendApiUrl.concat("/logout"))
-				.then(response => {
-					if (response.status === 200) {
-						this.$router.push('/'); // redirect to home page or login page
-					}
-				})
-				.catch(error => {
-					console.error('Error logging out:', error);
-				});
+			localStorage.removeItem('access_token');
+			this.$router.push('/'); // redirect to home page or login page
 		},
 		handleMenuClick(menuItem) {
 			if (menuItem.action) {
