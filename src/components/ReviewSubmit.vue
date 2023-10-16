@@ -56,8 +56,11 @@
     </v-container>
   </template>
   
-  <script>
+  <!-- <script>
+import PeoplePage from './PeoplePage.vue';
+
   export default {
+    component: {PeoplePage},
     methods: {
       getSectionStatus(section) {
         // Determine the status of a section based on the page's data
@@ -67,4 +70,4 @@
     },
   };
   </script>
-  
+   -->
