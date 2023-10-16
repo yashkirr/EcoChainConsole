@@ -32,19 +32,19 @@
                 <tbody>
                   <tr>
                     <td>People</td>
-                    <td>{{ getSectionStatus('People') }}</td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td>Planet</td>
-                    <td>{{ getSectionStatus('Planet') }}</td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td>Prosperity</td>
-                    <td>{{ getSectionStatus('Prosperity') }}</td>
+                    <td></td>
                   </tr>
                   <tr>
                     <td>Governance</td>
-                    <td>{{ getSectionStatus('Governance') }}</td>
+                    <td></td>
                   </tr>
                 </tbody>
               </v-table>

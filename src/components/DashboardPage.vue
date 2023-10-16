@@ -1,11 +1,12 @@
 <template>
-	<div class="content-wrapper">
+	<!-- <div class="content-wrapper"> -->
+		<div class="form-wizard-outer">
+	
+			<TopBar />
+			<v-container class="page-content" >
+			<v-container style="text-align: center;">
 
-		<div class="page-content">
-
-			<v-container>
-
-				<v-table>
+				<v-table style="border-spacing: 50px;">
 					<thead>
 						<tr>
 							<td colspan="4">
@@ -35,14 +36,14 @@
 			</v-container>
 			<v-container>
 
-				<v-table>
+				<v-table class="table">
 					<thead>
 						<tr>
 							<td colspan="5">
 								<h1>ESG Reports</h1>
 							</td>
 							<td>
-								<v-btn color="success" @click="createNewReport">
+								<v-btn block color="success" size="small" @click="createNewReport">
 									New Report
 								</v-btn>
 							</td>
@@ -66,7 +67,7 @@
 							<td>03/02/2023</td>
 							<td>In Progress</td>
 							<td>NA</td>
-							<td><v-btn color="success">Continue</v-btn></td>
+							<td><v-btn block color="success" variant="outlined" size="small">Continue</v-btn></td>
 						</tr>
 						<tr>
 							<td>PLUI7999765GH2023</td>
@@ -74,7 +75,7 @@
 							<td>03/02/2023</td>
 							<td>In Progress</td>
 							<td>NA</td>
-							<td><v-btn color="success">View Details</v-btn></td>
+							<td><v-btn block color="success" variant="outlined" size="small">View Details</v-btn></td>
 						</tr>
 						<tr>
 							<td>PLUI7999765GH2023</td>
@@ -82,7 +83,7 @@
 							<td>03/02/2023</td>
 							<td>In Progress</td>
 							<td>NA</td>
-							<td><v-btn color="success">View Details</v-btn></td>
+							<td><v-btn block color="success" variant="outlined" size="small">View Details</v-btn></td>
 						</tr>
 						<tr>
 							<td>PLUI7999765GH2023</td>
@@ -90,11 +91,11 @@
 							<td>03/02/2023</td>
 							<td>In Progress</td>
 							<td>NA</td>
-							<td><v-btn color="success">View Details</v-btn></td>
+							<td><v-btn block color="success" variant="outlined" size="small">View Details</v-btn></td>
 						</tr>
 						<br>
 						<tr>
-							<td><v-btn color="success">View All</v-btn></td>
+							<td><v-btn block color="success" variant="outlined" size="small">View All</v-btn></td>
 							<td></td>
 							<td></td>
 							<td></td>
@@ -103,22 +104,22 @@
 					</tbody>
 				</v-table>
 
-
-
 			</v-container>
+		</v-container>
 		</div>
-	</div>
+	<!-- </div> -->
 </template>
   
 <script>
 import axios from 'axios';
 import config from './config';
-
-
+import TopBar from './TopBar.vue';
+import "vue3-form-wizard/dist/style.css";
 
 export default {
 	name: 'DashboardPage',
-	data() {
+	components: { TopBar },
+		data() {
 		return {
 			name: '',
 			email: '',
@@ -159,6 +160,33 @@ export default {
 
 </script>
   
-<style scoped></style>
+<style scoped>
+@import url("https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css");
+
+.page-content {
+  width: 1500px;
+  overflow: auto; /* Add scroll if content overflows */
+  font-family:sans-serif;
+  font-size:small;
+  align-items: center;
+  height: 100vh;
+  padding: 20px 10px 20px 40px; 
+  margin: 10px 10px ;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  size: inherit;
+}
+
+.table {
+  margin-bottom: 50px; /* Adjust the value to set the desired spacing */
+  border-spacing: 70px;
+}
+.form-wizard-outer {
+  padding: 50px;
+}
+
+
+
+</style>
 
   

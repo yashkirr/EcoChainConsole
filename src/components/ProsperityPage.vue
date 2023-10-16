@@ -28,7 +28,7 @@
             <td>{{ item.name }}</td>
             <td>{{ item.Metric }}</td>
             <td>
-              <a href="your_external_link_here" target="_blank">
+              <a href="https://www.weforum.org/stakeholdercapitalism/our-metrics" target="_blank">
                 <i class="ti-eye"></i>
                 View details and rationale
               </a>
@@ -236,8 +236,8 @@ export default {
 
 <style scoped> 
 .scrollable-table {
-    max-height: 400px;
-    width: 1000px;
+    max-height: 500px;
+    width: 1400px;
     overflow-y: auto;
   
 }
