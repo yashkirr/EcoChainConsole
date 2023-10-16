@@ -27,21 +27,19 @@
                     <td>{{ item.name }}</td>
                     <td>{{ item.Metric }}</td>
                     <td>
-                        <a href="your_external_link_here" target="_blank">
+                        <a href="https://www.weforum.org/stakeholdercapitalism/our-metrics" target="_blank">
                             <i class="ti-eye"></i>
                             View details and rationale
                         </a>
                     </td>
                     <td>
-                        <v-switch v-model="item.isApplicable" color="#219653"></v-switch>
+                        <v-switch v-model="item.isApplicable" @change="handleSwitchChange(item, index)" color="#219653">
+                        </v-switch>
+
                     </td>
                     <td>
-                        <v-text-field
-                            v-model="item.scoringAchieved"
-                            :disabled="!item.isApplicable"
-                            variant="outlined"
-                            style="margin-top: 16px; width: 100%;"
-                        >
+                        <v-text-field v-model="item.scoringAchieved" :disabled="!item.isApplicable" variant="outlined"
+                            style="margin-top: 16px; width: 100%;">
                             <template v-slot:prepend>
                                 <span>{{ prependValues[index] }}</span>
                             </template>
@@ -51,69 +49,89 @@
             </tbody>
         </v-table>
     </div>
+    <div>{{ sectionStatus }}</div>
 </template>
 
   
-  <script>
-    export default {
-        name: 'GovernancePage',
-        data() {
-      return {
-        economicMenu: false,
-        allApplicable: 'false', // Set default to 'false' string
-        metrics: [
-          {
-            name: 'Ethical Behaviour ',
-            Metric: 'Anti-corruption training',
-            isApplicable: true,
-            scoringAchieved: '',
-          },
-          {
-            name: '',
-            Metric: 'Confirmed corruption incidents for previous year',
-            isApplicable: true,
-            scoringAchieved: '',
-          },
+<script>
+export default {
+    name: 'GovernancePage',
+    data() {
+        return {
+            economicMenu: false,
+            allApplicable: 'false', // Set default to 'false' string
+            metrics: [
+                {
+                    name: 'Ethical Behaviour ',
+                    Metric: 'Anti-corruption training',
+                    isApplicable: true,
+                    scoringAchieved: '',
+                },
+                {
+                    name: '',
+                    Metric: 'Confirmed corruption incidents for previous year',
+                    isApplicable: true,
+                    scoringAchieved: '',
+                },
 
-          {
-            name: '',
-            Metric: 'Confirmed corruption incidents in the current year',
-            isApplicable: true,
-            scoringAchieved: '',
-          },
-        ],
-      }
-    },
-
-     computed: {
-        prependValues() {
-            return this.metrics.map((_, index) => (index === 0  ? '%' : '#'));
+                {
+                    name: '',
+                    Metric: 'Confirmed corruption incidents in the current year',
+                    isApplicable: true,
+                    scoringAchieved: '',
+                },
+            ],
         }
     },
 
+    computed: {
+        prependValues() {
+            return this.metrics.map((_, index) => (index === 0 ? '%' : '#'));
+        },
+    
+
+    sectionStatus() {
+      if (this.metrics.every(item => item.isApplicable)) {
+        return 'Complete';
+      } else if (this.metrics.every(item => !item.isApplicable)) {
+        return 'Not Applicable';
+      } else {
+        return 'Partial';
+      }
+    },
+    },
 
 
     watch: {
         // Use watch to detect when allApplicable changes
         allApplicable(newValue) {
-          const applicable = newValue === 'false'
-          this.metrics.forEach(item => (item.isApplicable = applicable))
+            const applicable = newValue === 'false'
+            this.metrics.forEach(item => (item.isApplicable = applicable))
         },
-      },
+    },
 
-   
-  }
-  </script>
-  
-  <style scoped>
 
-.scrollable-table {
-   max-height: 400px; /* Adjust this value to your needs */
-    width: 1000px;
-    
-    overflow-y: auto;
-  
+    methods: {
+        handleSwitchChange(item, index) {
+            if (!item.isApplicable) {
+                this.metrics[index].scoringAchieved = '';
+            }
+        }
+    }
+
+
+
+
 }
+</script>
+  
+<style scoped>
+.scrollable-table {
+    max-height: 500px;
+    /* Adjust this value to your needs */
+    width: 1400px;
 
+    overflow-y: auto;
 
-  </style>
+}
+</style>

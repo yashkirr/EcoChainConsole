@@ -2,8 +2,7 @@
   <div class="form-wizard-outer">
 
   <h1 text: center> ESG Submission </h1>
-    <br>
-    <br>
+
     <FormWizard @on-complete="onComplete" 
                 color="#219653"
                 step-size="xs"
