@@ -27,32 +27,13 @@
             <v-btn block color="#3056D3" class="text-none">
               View NFT
             </v-btn>
-           </v-col>
-         </v-row>
-         
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
-    <v-row align="right" justify="center">
-          <v-col cols="2">
-                  <v-btn block color="#3056D3" class="text-none" @click="dashboardPage">
-              Done
-            </v-btn>
-          </v-col>
-          </v-row>    
-        </v-container>
-  
+  </v-container>
 </template>
 
-<script>
-export default {
-  name: 'SuccessPage',
-  methods: {
-dashboardPage() {
-			this.$router.push('/dashboard');
-		}
-  }
-  }
-</script>
 
 
 

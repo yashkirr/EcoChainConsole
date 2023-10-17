@@ -27,7 +27,7 @@
                     <td>{{ item.name }}</td>
                     <td>{{ item.Metric }}</td>
                     <td>
-                        <a href="https://www.weforum.org/stakeholdercapitalism/our-metrics" target="_blank">
+                        <a href="your_external_link_here" target="_blank">
                             <i class="ti-eye"></i>
                             View details and rationale
                         </a>
@@ -49,7 +49,6 @@
             </tbody>
         </v-table>
     </div>
-    <div>{{ sectionStatus }}</div>
 </template>
 
   
@@ -87,19 +86,9 @@ export default {
     computed: {
         prependValues() {
             return this.metrics.map((_, index) => (index === 0 ? '%' : '#'));
-        },
-    
+        }
+    },
 
-    sectionStatus() {
-      if (this.metrics.every(item => item.isApplicable)) {
-        return 'Complete';
-      } else if (this.metrics.every(item => !item.isApplicable)) {
-        return 'Not Applicable';
-      } else {
-        return 'Partial';
-      }
-    },
-    },
 
 
     watch: {
@@ -127,9 +116,9 @@ export default {
   
 <style scoped>
 .scrollable-table {
-    max-height: 500px;
+    max-height: 400px;
     /* Adjust this value to your needs */
-    width: 1400px;
+    width: 1000px;
 
     overflow-y: auto;
 
