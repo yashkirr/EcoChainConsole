@@ -203,7 +203,16 @@ export default {
         item => item.Metric === 'Economic Contribution' && item.isApplicable
       );
     },
-
+    
+    sectionStatus() {
+      if (this.metrics.every(item => item.isApplicable)) {
+        return 'Complete';
+      } else if (this.metrics.every(item => !item.isApplicable)) {
+        return 'Not Applicable';
+      } else {
+        return 'Partial';
+      }
+    },
   
   },
 

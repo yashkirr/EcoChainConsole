@@ -93,7 +93,16 @@ export default {
   computed: {
     prependValues() {
       return this.metrics.map((_, index) => (index === 1 ? '%' : '#'));
-    }
+    },
+    sectionStatus() {
+      if (this.metrics.every(item => item.isApplicable)) {
+        return 'Complete';
+      } else if (this.metrics.every(item => !item.isApplicable)) {
+        return 'Not Applicable';
+      } else {
+        return 'Partial';
+      }
+    },
   },
   watch: {
     // Use watch to detect when allApplicable changes
