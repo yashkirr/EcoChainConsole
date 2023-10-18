@@ -33,6 +33,12 @@
 								class="text-none">
 								Sign in
 							</v-btn>
+							<v-col cols="12" v-for="(error, index) in errors" :key="index">
+								<v-alert type="error" dense>
+									{{ error }}
+								</v-alert>
+							</v-col>
+
 							<p class="mt-3">
 								Don't have an account?
 								<router-link to="/SignUp">Sign up</router-link>
@@ -55,7 +61,9 @@ import config from './config';
 export default {
 	components: { Authbranding },
 	data() {
+
 		return {
+			errors: [],
 			valid: false,
 			email: '',
 			password: '',
@@ -74,37 +82,44 @@ export default {
 			],
 		};
 	},
+
 	methods: {
-		async submitForm() {
-			if (this.valid) {
-				try {
-					const response = await axios.post(config.backendApiUrl.concat("/login"), {
-						email: this.email,
-						password: this.password,
-					});
+	async submitForm() {
+		this.errors = [];
 
-					console.log('Response from backend:', response.data);
+		if (this.valid) {
+			console.log('Form is valid, proceed with submission');
+			try {
+				const response = await axios.post(config.backendApiUrl.concat("/login"), {
+					email: this.email,
+					password: this.password,
+				});
 
-					// If the response contains an access token, we assume login was successful
-					if (response.data.success) {
-						localStorage.setItem('access_token', response.data.access_token);
-						console.log("Attempting redirect...");
-						this.$router.push('/dashboard');
-					} else {
-						console.error('Login failed:', response.data.message);
-					}
-				} catch (error) {
-					console.error('Error:', error.response ? error.response.data : error.message);
+				console.log('Response from backend:', response.data);
+
+				if (response.data.access_token) {
+					console.log("Login successful. Redirecting...");
+					localStorage.setItem('access_token', response.data.access_token);
+					this.$router.push('/dashboard');
+				} else {
+					this.errors.push(response.data.message || "An error occurred during login.");
 				}
-			} else {
-				console.log('Form is not valid');
+			} catch (error) {
+				console.error('Error during login:', error.message);
+				this.errors.push("Please ensure your entered the correct email & password");
 			}
+		} else {
+			this.errors.push("Please ensure all fields are filled out correctly.");
 		}
 	}
+}
 
 };
 
+
 </script>
+
+
 
 <style scoped>
 .auth-container {
@@ -123,5 +138,4 @@ export default {
 	margin-bottom: 30px;
 	text-align: left;
 	font-family: 'Abyssinica SIL', sans-serif;
-}
-</style>
+}</style>
