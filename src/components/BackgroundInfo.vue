@@ -60,11 +60,6 @@ export default {
     return {
       firstName: '',
       lastName: '',
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-      ],
       startDate: null,
       endDate: null,
       checkbox: false,
