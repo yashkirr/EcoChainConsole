@@ -3,7 +3,7 @@
 
     <v-form>
     <v-row>
-  <v-col cols="12" sm="3">
+  <v-col cols="6">
 
       <label>First Name </label>
       <v-text-field
@@ -14,7 +14,7 @@
       ></v-text-field>
       </v-col>
   
- <v-col cols="12" sm="3">
+ <v-col cols="6" >
       <label>Last Name </label>
       <v-text-field
         v-model="lastName"
@@ -24,16 +24,7 @@
       ></v-text-field>
        </v-col>
 
-<v-col cols="12" sm="6">
-      <label>Email </label>
-      <v-text-field
-        v-model="email"
-         placeholder="Enter your  work email"
-         variant = "outlined" 
-        :rules="emailRules"
-        required
-      ></v-text-field>
-</v-col>
+
 </v-row>
 
       <p>Please select your reporting period</p>
