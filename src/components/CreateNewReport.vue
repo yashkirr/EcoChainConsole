@@ -1,22 +1,23 @@
 <template>
   <div class="form-wizard-outer">
-
-  <h1 text: center> ESG Submission </h1>
+    <h1 text: center> ESG Submission </h1>
     <br>
     <br>
-    <FormWizard @on-complete="onComplete" 
-                color="#219653"
-                step-size="xs"
-                back-button-text="Back to previous section"
-                next-button-text="Next section"
-                finish-button-text="Submit">
+    <FormWizard 
+      @on-complete="onComplete"
+      @on-change="(...args) => beforeChange(...args)"
+      color="#219653"
+      step-size="xs"
+      back-button-text="Back to previous section"
+      next-button-text="Next section"
+      finish-button-text="Submit">
 
       <div class="form-wizard-container">
-      <TabContent title="Submission Info" icon="ti-wallet" text-center>
+        <TabContent title="Submission Info" icon="ti-wallet" text-center>
           <BackgroundInfo/>
         </TabContent>
         <TabContent title="People" icon="ti-user">
-          <PeoplePage ref="PeoplePage"/>
+          <PeoplePage @updateMetrics="handleMetricsUpdate" />
         </TabContent>
         <TabContent title="Governance" icon="ti-shield">
           <GovernancePage ref="GovernancePage"/>
@@ -87,7 +88,6 @@
   </div>
 </template>
 
-
 <script>
 // Local registration
 import { FormWizard, TabContent } from "vue3-form-wizard";
@@ -95,11 +95,10 @@ import "vue3-form-wizard/dist/style.css";
 import BackgroundInfo from './BackgroundInfo.vue';
 import PeoplePage from './PeoplePage.vue';
 import GovernancePage from './GovernancePage.vue';
-import PlanetPage from './PlanetPage.vue'; 
+import PlanetPage from './PlanetPage.vue';
 import ProsperityPage from './ProsperityPage.vue';
 import axios from 'axios';
 import config from './config';
-
 
 export default {
   components: {
@@ -111,13 +110,19 @@ export default {
     PlanetPage,
     ProsperityPage
   },
-  methods: {
-  onComplete() {
-    this.$router.push({ name: 'SuccessPage' }); // Using named route
-    // or
-    // this.$router.push('/SuccessPage'); // Using path directly
+  
+  data() {   
+   
+   return {
+         diversityInclusion: '',
+         payEquality: '',
+         wageLevel: '',
+         healthSafetyLevel: ''
+      };
   },
-  getSectionStatus(section) {
+
+  methods: {
+    getSectionStatus(section) {
       // Determine the status of a section based on the page's data
       const pageData = this.$refs[section];
       if (pageData && pageData.sectionStatus) {
@@ -162,9 +167,70 @@ export default {
 					this.$router.push('/CreateNewReport');
 				}
 		},
-},
- 
+     handleMetricsUpdate(metrics) {
+        this.diversityInclusion = metrics.find(m => m.Metric === 'Diversity and Inclusion').scoringAchieved;
+        this.payEquality = metrics.find(m => m.Metric === 'Pay equality').scoringAchieved;
+        this.wageLevel = metrics.find(m => m.Metric === 'Wage Level').scoringAchieved;
+        this.healthSafetyLevel = metrics.find(m => m.Metric === 'Rate of fatalities').scoringAchieved;
+    },
+      async savePeopleMetrics() {  
+      const token = localStorage.getItem('access_token');
+					const headers = {
+						'Authorization': 'Bearer ' + token
+					};
+          
+      try {   
+            
+        const response = await axios.post(config.backendApiUrl.concat("/input_peoplemetrics/"+ this.$route.query.submissionID), {
+          DiversityAndInclusion: this.diversityInclusion,
+          PayEquality: this.payEquality,
+          WageLevel: this.wageLevel,
+          HealthAndSafetyLevel: this.healthSafetyLevel
+        },{ headers: headers });
+
+        if (response.data.success) {
+          console.log('Metrics saved successfully:', response.data.message);
+        } else {
+          console.error('Error saving metrics:', response.data.message);
+        }
+      } catch (error) {
+        console.error('Error saving metrics:', error.message);
+      }
+    },
+
+    onComplete() {
+      this.$router.push({ name: 'SuccessPage' }); // Using named route
+      // or
+      // this.$router.push('/SuccessPage'); // Using path directly
+    },
+
+    beforeChange(activeTabIndex, nextTabIndex) {
+      console.log('beforeChange function triggered')
+      console.log('Navigating from', activeTabIndex, 'to', nextTabIndex);
+      switch (activeTabIndex) {
+        case 0: // Submission Info tab
+          // Handle any save or checks for this tab if necessary
+          break;
+        case 1: // People tab
+          this.savePeopleMetrics();
+          break;
+        case 2: // Governance tab
+          // Save data or checks related to the Governance tab
+          break;
+        case 3: // Planet tab
+          // Save data or checks related to the Planet tab
+          break;
+        case 4: // Prosperity tab
+          // Save data or checks related to the Prosperity tab
+          break;
+        case 5: // Review and Submit tab
+          // Save data or checks related to the Review and Submit tab
+          break;
+      }
+    }
+  }
 };
+
 </script>
 
 <style>
@@ -176,10 +242,11 @@ export default {
   margin: 10px 10px ;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
- 
   overflow: auto;
 }
+
 .form-wizard-outer {
   padding: 50px;
 }
+
 </style>

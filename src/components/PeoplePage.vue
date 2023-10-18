@@ -92,12 +92,23 @@ export default {
           if (!item.isApplicable) {
               this.metrics[index].scoringAchieved = '';
           }
-      }
+      },
+        saveMetricsToParent() {
+        this.$emit('updateMetrics', this.metrics);
+        console.log(this.metrics)
+    }
+      
   },
   watch: {
       allApplicable(newValue) {
           this.metrics.forEach(item => (item.isApplicable = !newValue));
       },
+     metrics: {
+      deep: true,
+      handler() {
+         this.saveMetricsToParent();
+      }
+   },
   },
   computed: {
   sectionStatus() {
