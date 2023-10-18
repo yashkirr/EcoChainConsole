@@ -171,10 +171,12 @@ export default {
 
 				const response = await axios.get(config.backendApiUrl.concat("/start_submission"), { headers: headers });
 				if (response.data.success) {
-					this.SubmissionID = response.data.submission_id;
-					this.$router.push('/CreateNewReport');
+					const SubmissionID = response.data.submission_id;
+                    this.$router.push({ name: 'CreateNewReport', query: { submissionID: SubmissionID }});
 				}
 		},
+
+	
 		getStatusText(status) {
         switch (status) {
             case 0: return 'In Progress';
