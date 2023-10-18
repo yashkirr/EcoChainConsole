@@ -97,7 +97,6 @@ import PeoplePage from './PeoplePage.vue';
 import GovernancePage from './GovernancePage.vue';
 import PlanetPage from './PlanetPage.vue';
 import ProsperityPage from './ProsperityPage.vue';
-import ReviewSubmitPage from './ReviewSubmit.vue';
 import axios from 'axios';
 import config from './config';
 
