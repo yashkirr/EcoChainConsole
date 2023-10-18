@@ -17,7 +17,7 @@
           <BackgroundInfo/>
         </TabContent>
         <TabContent title="People" icon="ti-user">
-          <PeoplePage @updateMetrics="handleMetricsUpdate" />
+          <PeoplePage ref="PeoplePage" />
         </TabContent>
         <TabContent title="Governance" icon="ti-shield">
           <GovernancePage ref="GovernancePage"/>

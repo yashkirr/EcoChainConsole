@@ -111,7 +111,7 @@ export default {
    },
   },
   computed: {
-  sectionStatus() {
+    sectionStatus() {
       if (this.metrics.every(item => item.isApplicable)) {
         return 'Complete';
       } else if (this.metrics.every(item => !item.isApplicable)) {
