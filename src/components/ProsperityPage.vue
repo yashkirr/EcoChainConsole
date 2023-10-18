@@ -215,7 +215,7 @@ export default {
 
 <style scoped> .scrollable-table {
    max-height: 400px;
-   width: 1400px;
+  
    overflow: auto;
 
  }

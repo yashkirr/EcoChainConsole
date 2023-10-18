@@ -1,6 +1,6 @@
 <template>
   <div class="table">
-      <v-table class="scrollable-table">
+      <v-table class="scrollable-table" style = "width:100%">
           <thead>
               <tr>
                   <td colspan="3" class="text-left text-no-wrap">
@@ -120,8 +120,7 @@ export default {
 <style scoped>
 .scrollable-table {
    max-height: 400px; /* Adjust this value to your needs */
-    width: 1400px;
-    
+   
     overflow: auto;
   
 }

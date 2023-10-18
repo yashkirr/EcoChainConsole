@@ -3,8 +3,8 @@
     <v-row>
       <!-- Image on the left -->
       <v-col>
-        <v-img src="@/assets/successphoto.png" alt="Company Logo" class="company-logo"
-          style="width: 400px margin-left: 100px;"></v-img>
+        <v-img src="@/assets/successphoto.png" alt="Success Photo" class="success-photo"
+          ></v-img>
       </v-col>
 
       <!-- Content on the right -->
@@ -62,9 +62,16 @@ dashboardPage() {
 <style scoped>
 .auth-container {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
+
+  gap: 10px;
   align-items: center;
   height: 100vh;
+  width: 100%;
+}
+
+.success-photo {
+  width: 500px;
+  height: 500px;
+  position: center
 }
 </style>

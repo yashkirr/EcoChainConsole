@@ -1,6 +1,6 @@
 <template>
 
-		<div class="page-content">
+		<div >
 
 			<v-container>
 
@@ -189,14 +189,6 @@ export default {
 </script>
   
 <style scoped>
-.page-content{
-	padding: 20px 30px 40px 40px; 
-  margin: 10px 10px ;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  width: 1700px;
-  overflow: auto;
-  
-}
+
 </style>
   

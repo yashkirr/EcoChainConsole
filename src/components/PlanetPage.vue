@@ -131,7 +131,7 @@ export default {
 .scrollable-table {
   max-height: 400px;
   /* Adjust this value to your needs */
-  width: 1400px;
+
 
   overflow: auto;
 
