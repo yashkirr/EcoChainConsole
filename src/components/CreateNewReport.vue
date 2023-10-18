@@ -16,20 +16,71 @@
           <BackgroundInfo/>
         </TabContent>
         <TabContent title="People" icon="ti-user">
-          <PeoplePage />
+          <PeoplePage ref="PeoplePage"/>
         </TabContent>
         <TabContent title="Governance" icon="ti-shield">
-          <GovernancePage />
+          <GovernancePage ref="GovernancePage"/>
         </TabContent>
         <TabContent title="Planet" icon="ti-world">
-          <PlanetPage />
+          <PlanetPage ref="PlanetPage"/>
         </TabContent>
         <TabContent title="Prosperity" icon="ti-wallet">
-          <ProsperityPage />
+          <ProsperityPage ref="ProsperityPage"/>
         </TabContent>
-
-        <TabContent title="Review and Submit" icon="ti-check-box">
-          <ReviewSubmitPage />
+        <TabContent title="Review and Submit" icon="ti-check-box">    
+      <table>
+        <thead>
+          <tr>
+            <td colspan="4">
+              <h1>Submission Information</h1>
+            </td>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr>
+            <td>Company</td>
+            <td>[Name of Company]</td>
+            <td>Submitted by</td>
+            <td>[Name of Submitter]</td>
+          </tr>
+          <tr>
+            <td>Submission Period</td>
+            <td colspan="3">01 May 2022 - 30 April 2023</td>
+          </tr>
+          <tr>
+            <td colspan="4">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Sections included in Submission</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>People</td>
+                    <td>{{ getSectionStatus('PeoplePage') }}</td>
+                  </tr>
+                  <tr>
+                    <td>Planet</td>
+                    <td>{{ getSectionStatus('PlanetPage') }}</td>
+                  </tr>
+                  <tr>
+                    <td>Prosperity</td>
+                    <td>{{ getSectionStatus('ProsperityPage') }}</td>
+                  </tr>
+                  <tr>
+                    <td>Governance</td>
+                    <td>{{ getSectionStatus('GovernancePage') }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      Once Submitted, a PDF will be generated for the report, a record will be stored on the Blockchain, and an NFT will be minted as certification. Please note that this is irreversible.
         </TabContent>
       </div>
     </FormWizard>
@@ -46,7 +97,8 @@ import PeoplePage from './PeoplePage.vue';
 import GovernancePage from './GovernancePage.vue';
 import PlanetPage from './PlanetPage.vue'; 
 import ProsperityPage from './ProsperityPage.vue';
-import ReviewSubmitPage from './ReviewSubmit.vue';
+import axios from 'axios';
+import config from './config';
 
 
 export default {
@@ -57,8 +109,7 @@ export default {
     PeoplePage,
     GovernancePage,
     PlanetPage,
-    ProsperityPage,
-    ReviewSubmitPage
+    ProsperityPage
   },
   methods: {
   onComplete() {
@@ -66,6 +117,51 @@ export default {
     // or
     // this.$router.push('/SuccessPage'); // Using path directly
   },
+  getSectionStatus(section) {
+      // Determine the status of a section based on the page's data
+      const pageData = this.$refs[section];
+      if (pageData && pageData.sectionStatus) {
+        return pageData.sectionStatus;
+      }
+      return 'N/A';
+    },
+    async fetchDashboardData() {
+			try {
+				const token = localStorage.getItem('access_token');
+				const headers = {
+					'Authorization': 'Bearer ' + token
+				};
+
+				const response = await axios.get(config.backendApiUrl.concat("/get_dashboard"), { headers: headers });
+
+				if (response.data.success) {
+					this.name = response.data.name;
+					this.email = response.data.email;
+					this.algo_add = response.data.algo_add;
+					this.submissions = response.data.submissions;
+					this.location = response.data.location;
+					this.industry = response.data.industry;
+					this.size = response.data.size;
+					this.description = response.data.description;
+				} else {
+					console.error('Error fetching dashboard data');
+				}
+			} catch (error) {
+				console.error('There was an error fetching the data', error);
+			}
+		},
+		async createNewReport() {
+			const token = localStorage.getItem('access_token');
+				const headers = {
+					'Authorization': 'Bearer ' + token
+				};
+
+				const response = await axios.get(config.backendApiUrl.concat("/start_submission"), { headers: headers });
+				if (response.data.success) {
+					this.SubmissionID = response.data.submission_id;
+					this.$router.push('/CreateNewReport');
+				}
+		},
 },
  
 };

@@ -27,7 +27,7 @@
           <td>{{ item.name }}</td>
           <td>{{ item.Metric }}</td>
           <td>
-            <a href="your_external_link_here" target="_blank">
+            <a href="https://www.weforum.org/stakeholdercapitalism/our-metrics" target="_blank">
               <i class="ti-eye"></i>
               View details and rationale
             </a>
@@ -172,6 +172,16 @@ export default {
         item => item.Metric === 'Economic Contribution' && item.isApplicable
       );
     },
+    
+    sectionStatus() {
+      if (this.metrics.every(item => item.isApplicable)) {
+        return 'Complete';
+      } else if (this.metrics.every(item => !item.isApplicable)) {
+        return 'Not Applicable';
+      } else {
+        return 'Partial';
+      }
+    },
 
 
   },
@@ -205,8 +215,8 @@ export default {
 
 <style scoped> .scrollable-table {
    max-height: 400px;
-   width: 1000px;
-   overflow-y: auto;
+   width: 1400px;
+   overflow: auto;
 
  }
 </style>

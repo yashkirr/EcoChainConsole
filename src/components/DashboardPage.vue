@@ -1,5 +1,4 @@
 <template>
-	<div class="content-wrapper">
 
 		<div class="page-content">
 
@@ -42,7 +41,7 @@
 								<h1>ESG Reports</h1>
 							</td>
 							<td style="text-align: right;">
-								<v-btn color="green" @click="createNewReport">
+								<v-btn color="#219653" size="small" @click="createNewReport">
 									New Report
 								</v-btn>
 							</td>
@@ -115,7 +114,6 @@
 
 			</v-container>
 		</div>
-	</div>
 </template>
   
 <script>
@@ -190,6 +188,15 @@ export default {
 
 </script>
   
-<style scoped></style>
-
+<style scoped>
+.page-content{
+	padding: 20px 30px 40px 40px; 
+  margin: 10px 10px ;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 1700px;
+  overflow: auto;
+  
+}
+</style>
   
