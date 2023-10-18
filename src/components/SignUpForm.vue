@@ -10,7 +10,7 @@
 					<v-container>
 						<v-row>
 							<v-col cols="12">
-								<h2 class="auth-heading">SignUp for Ecochain</h2>
+								<h2 class="auth-heading">Register Your Organisation</h2>
 							</v-col>
 						</v-row>
 
@@ -42,27 +42,19 @@
 								append-inner-icon="mdi-lock-outline" v-bind="commonProps" required></v-text-field>
 						</v-col>
 
-						<v-col cols="12">
-							<label>User Type</label>
-							<v-radio-group v-model="userType" column>
-								<v-radio label="Employee" value="radio-1"></v-radio>
-								<v-radio label="Investor" value="radio-2"></v-radio>
-							</v-radio-group>
-						</v-col>
-
 						<v-row class="mt-3">
 							<v-col cols="12">
 								<v-btn block @click="submitForm" :disabled="!valid" variant="flat" color="#3056D3"
 									class="text-none">
-									Create Account
+									Create Organisation
 								</v-btn>
 								<v-col cols="12" v-for="(error, index) in errors" :key="index">
                                 <v-alert type="error" dense>
                                     {{ error }}
                                 </v-alert>
                             </v-col>
-								<p class="mt-3" text-align-center>
-									Already have an account?
+							<p class="mt-3" style="text-align: center;">
+									Already registered your org?
 									<router-link to="/">Sign In</router-link>
 								</p>
 							</v-col>
@@ -133,8 +125,9 @@ export default {
                     console.log('Response from backend:', response.data);
 
                     if (response.data.success) {
+						localStorage.setItem('access_token', response.data.access_token);
                         console.log("Attempting redirect...")
-                        this.$router.push('/dashboard');
+                        this.$router.push('/organisation_form');
                     } else {
                         console.error('Register failed:', response.data.message);
                         this.errors.push(response.data.message || "An error occurred during registration.");

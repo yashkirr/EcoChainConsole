@@ -9,7 +9,7 @@
 
     <!-- Description -->
     <div class="description-section">
-      <p class="company-description">EcoChain: Revolutionising compliance through innovation</p>
+      <p class="company-description"><i>Revolutionising compliance through innovation</i></p>
     </div>
 
     <!-- Picture -->
