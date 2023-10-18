@@ -14,7 +14,6 @@
         <p style="margin-bottom: 20px;">Your submission has successfully been submitted and stored on the Blockchain. A
           summary email has been sent as reference for the report and an NFT has been minted as certification.</p>
 
-        <div style="margin-bottom: 20px;"> <strong>Report ID:</strong> {{ reportId }}</div>
         <div style="margin-bottom: 20px;"><strong>NFT TXID:</strong> {{ nftTxid }}</div>
         <div style="margin-bottom: 20px;"><strong>Report TXID:</strong> {{ reportTxid }}</div>
 
