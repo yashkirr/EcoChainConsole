@@ -3,7 +3,7 @@
     <!-- Company Logo -->
     <div class="logo-section">
       <v-img 
-      src="@/assets/logo.png" alt="Company Logo" class="company-logo">
+      src="@/assets/logo.jpeg" alt="Company Logo" class="company-logo">
       </v-img>
     </div>
 
@@ -15,7 +15,7 @@
     <!-- Picture -->
     <div class="picture-section">
     <v-img 
-      src="@/assets/treephoto.png" alt="Company photo" class = "company-picture" >
+      src="@/assets/brandingphoto.png" alt="Company photo" class = "company-picture" >
     </v-img>
     </div>
 

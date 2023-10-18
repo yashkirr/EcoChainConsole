@@ -2,7 +2,7 @@
 	<div class="wrapper">
 		<div class="side-nav-bar">
 			<div class="nav-logo">
-				<v-img src="@/assets/logo.png" alt="Company Logo" class="company-logo"
+				<v-img src="@/assets/logo_trans.png" alt="Company Logo" class="company-logo"
 					style="margin: 1rem 0 2rem 0;"></v-img>
 			</div>
 			<div class="nav-items" style="">

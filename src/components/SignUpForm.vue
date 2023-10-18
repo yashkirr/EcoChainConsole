@@ -10,7 +10,7 @@
 					<v-container>
 						<v-row>
 							<v-col cols="12">
-								<h2 class="auth-heading">Register Your Organisation</h2>
+								<h2 class="auth-heading">SignUp for Ecochain</h2>
 							</v-col>
 						</v-row>
 
@@ -42,15 +42,27 @@
 								append-inner-icon="mdi-lock-outline" v-bind="commonProps" required></v-text-field>
 						</v-col>
 
+						<v-col cols="12">
+							<label>User Type</label>
+							<v-radio-group v-model="userType" column>
+								<v-radio label="Employee" value="radio-1"></v-radio>
+								<v-radio label="Investor" value="radio-2"></v-radio>
+							</v-radio-group>
+						</v-col>
 
 						<v-row class="mt-3">
 							<v-col cols="12">
 								<v-btn block @click="submitForm" :disabled="!valid" variant="flat" color="#3056D3"
 									class="text-none">
-									Create Organisation
+									Create Account
 								</v-btn>
-								<p class="mt-3" style="text-align: center;">
-									Already registered your org?
+								<v-col cols="12" v-for="(error, index) in errors" :key="index">
+                                <v-alert type="error" dense>
+                                    {{ error }}
+                                </v-alert>
+                            </v-col>
+								<p class="mt-3" text-align-center>
+									Already have an account?
 									<router-link to="/">Sign In</router-link>
 								</p>
 							</v-col>
@@ -70,7 +82,9 @@ import config from './config';
 
 export default {
 	data() {
+
 		return {
+			errors: [],
 			commonProps: {
 				variant: 'outlined',
 				color: '#3C7931',
@@ -78,7 +92,7 @@ export default {
 			},
 			userType: null,
 			valid: false,
-			Organisation_name: '',
+			OrganisationName: '',
 			email: '',
 			emailRules: [
 				value => (value ? true : 'Email is required.'),
@@ -104,35 +118,50 @@ export default {
 		},
 	},
 	methods: {
-		async submitForm() {
-			if (this.valid) {
-				console.log('Form is valid, proceed with submission');
-				try {
-					const response = await axios.post(config.backendApiUrl.concat("/register"), {
-						email: this.email,
-						password: this.password,
-						name: this.Organisation_name
-					});
+        async submitForm() {
+            this.errors = [];  
 
-					// Handle the response from the backend here
-					console.log('Response from backend:', response.data);
+            if (this.valid) {
+                console.log('Form is valid, proceed with submission');
+                try {
+                    const response = await axios.post(config.backendApiUrl.concat("/register"), {
+                        email: this.email,
+                        password: this.password,
+                        name: this.Organisation_name
+                    });
 
-					if (response.data.success) {
-						localStorage.setItem('access_token', response.data.access_token);
+                    console.log('Response from backend:', response.data);
+
+                    if (response.data.success) {
                         console.log("Attempting redirect...")
-                        this.$router.push('/organisation_form');
+                        this.$router.push('/dashboard');
                     } else {
                         console.error('Register failed:', response.data.message);
+                        this.errors.push(response.data.message || "An error occurred during registration.");
                     }
-				} catch (error) {
-					console.error('Error:', error);
-					// Handle errors here
-				}
-			} else {
-				console.log('Form is not valid');
-			}
-		}
-	},
+                } catch (error) {
+                    if (error.response) {
+                        if (error.response.data && error.response.data.message) {
+                            this.errors.push(error.response.data.message);
+                        } else {
+                            if (error.response.status === 400) {
+                                this.errors.push("Invalid input. Please check your data and try again.");
+                            } else if (error.response.status === 409) {
+                                this.errors.push("Email already exists. Please use another one.");
+                            } else {
+                                this.errors.push("An error occurred while processing your request. Please try again later.");
+                            }
+                        }
+                    } else {
+                        this.errors.push("Network error. Please check your connection and try again.");
+                    }
+                }
+            } else {
+                this.errors.push("Please ensure all fields are filled out correctly.");
+            }
+        }
+    },
+	
 };
 </script>
 
@@ -158,7 +187,7 @@ export default {
 
 /* Style the form component */
 .auth-form {
-	margin-top: -50px;
+	margin-top: -50px
 }
 
 .auth-heading {
