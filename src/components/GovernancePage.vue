@@ -49,7 +49,6 @@
             </tbody>
         </v-table>
     </div>
-    <div>{{ sectionStatus }}</div>
 </template>
 
   
@@ -88,7 +87,6 @@ export default {
         prependValues() {
             return this.metrics.map((_, index) => (index === 0 ? '%' : '#'));
         },
-    
 
     sectionStatus() {
       if (this.metrics.every(item => item.isApplicable)) {
@@ -100,7 +98,6 @@ export default {
       }
     },
     },
-
 
     watch: {
         // Use watch to detect when allApplicable changes
@@ -127,11 +124,11 @@ export default {
   
 <style scoped>
 .scrollable-table {
-    max-height: 500px;
+    max-height: 400px;
     /* Adjust this value to your needs */
-    width: 1400px;
 
-    overflow-y: auto;
+
+    overflow: auto;
 
 }
 </style>

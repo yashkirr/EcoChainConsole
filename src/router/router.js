@@ -4,7 +4,7 @@ import LandingPage from '../components/LandingPage.vue';
 import CreateNewReport from '../components/CreateNewReport.vue'; 
 import SignUp from '../components/SignUpForm.vue'; 
 import SuccessPage from  '../components/SuccessPage.vue'; 
-
+import OrganisationForm from '../components/OrganisationForm.vue';
 
 const routes = [
   {
@@ -27,6 +27,12 @@ const routes = [
     name: 'CreateNewReport',
     component: CreateNewReport
   },
+  {
+    path: '/organisation_form',
+    name: 'OrganisationForm',
+    component: OrganisationForm
+  },
+
 
   {
     path: '/SuccessPage',

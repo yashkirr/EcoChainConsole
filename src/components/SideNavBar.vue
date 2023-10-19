@@ -2,7 +2,7 @@
 	<div class="wrapper">
 		<div class="side-nav-bar">
 			<div class="nav-logo">
-				<v-img src="@/assets/logo.png" alt="Company Logo" class="company-logo"
+				<v-img src="@/assets/logo_trans.png" alt="Company Logo" class="company-logo"
 					style="margin: 1rem 0 2rem 0;"></v-img>
 			</div>
 			<div class="nav-items" style="">
@@ -29,7 +29,7 @@ export default {
 		return {
 			menuItems: [
 				{ label: 'Dashboard', link: '/dashboard', icon: 'ti-layout-grid2'},
-				{ label: 'Create New Report', link: '/CreateNewReport', icon: 'ti-notepad' },
+				{ label: 'Create New Report', action: this.createNewReport, icon: 'ti-notepad' },
 				{ label: 'Log Out', link: '/', action: this.logout, icon: 'ti-back-left'}
 
 			]
@@ -37,16 +37,20 @@ export default {
 	},
 	methods: {
 		logout() {
-			// Assuming you have an endpoint like '/logout' to handle logouts on your backend
-			axios.post(config.backendApiUrl.concat("/logout"))
-				.then(response => {
-					if (response.status === 200) {
-						this.$router.push('/'); // redirect to home page or login page
-					}
-				})
-				.catch(error => {
-					console.error('Error logging out:', error);
-				});
+			localStorage.removeItem('access_token');
+			this.$router.push('/'); // redirect to home page or login page
+		},
+		async createNewReport() {
+			const token = localStorage.getItem('access_token');
+				const headers = {
+					'Authorization': 'Bearer ' + token
+				};
+
+				const response = await axios.get(config.backendApiUrl.concat("/start_submission"), { headers: headers });
+				if (response.data.success) {
+					this.SubmissionID = response.data.submission_id;
+					this.$router.push('/CreateNewReport');
+				}
 		},
 		handleMenuClick(menuItem) {
 			if (menuItem.action) {

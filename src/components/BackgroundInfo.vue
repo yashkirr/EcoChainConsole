@@ -3,7 +3,7 @@
 
     <v-form>
     <v-row>
-  <v-col cols="12" sm="3">
+  <v-col cols="6">
 
       <label>First Name </label>
       <v-text-field
@@ -14,7 +14,7 @@
       ></v-text-field>
       </v-col>
   
- <v-col cols="12" sm="3">
+ <v-col cols="6" >
       <label>Last Name </label>
       <v-text-field
         v-model="lastName"
@@ -24,16 +24,7 @@
       ></v-text-field>
        </v-col>
 
-<v-col cols="12" sm="6">
-      <label>Email </label>
-      <v-text-field
-        v-model="email"
-         placeholder="Enter your  work email"
-         variant = "outlined" 
-        :rules="emailRules"
-        required
-      ></v-text-field>
-</v-col>
+
 </v-row>
 
       <p>Please select your reporting period</p>
@@ -48,13 +39,6 @@
        >
        </v-text-field >
 
-      <v-checkbox v-model="checkbox">
-        <template v-slot:label>
-          <div>
-            I hereby confirm that all metric scores provided are true and correct. In the case that audit findings reflect misconduct in this submission, I accept full responsibility for non-compliant reporting.
-          </div>
-        </template>
-      </v-checkbox>
        
     
     </v-form>
@@ -76,7 +60,7 @@ export default {
       ],
       startDate: null,
       endDate: null,
-      checkbox: false,
+     
     };
   },
   methods: {
@@ -88,7 +72,9 @@ export default {
         startDate: this.startDate,
         endDate: this.endDate
       });
-    }
+    }, 
+
+    
   }
 };
 </script>

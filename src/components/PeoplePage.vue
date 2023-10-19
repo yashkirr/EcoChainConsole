@@ -1,6 +1,6 @@
 <template>
-  <v-container>
-      <v-table class="scrollable-table">
+  <div class="table">
+      <v-table class="scrollable-table" style = "width:100%">
           <thead>
               <tr>
                   <td colspan="3" class="text-left text-no-wrap">
@@ -25,7 +25,7 @@
                   <td>{{ item.name }}</td>
                   <td>{{ item.Metric }}</td>
                   <td>
-                      <a href="https://www.weforum.org/stakeholdercapitalism/our-metrics" target="_blank">
+                    <a href="https://www.weforum.org/stakeholdercapitalism/our-metrics" target="_blank">
                           <i class="ti-eye"></i> View details and rationale
                       </a>
                   </td>
@@ -50,7 +50,7 @@
               </tr>
           </tbody>
       </v-table>
-    </v-container>
+  </div>
 </template>
 
 <script>
@@ -92,7 +92,23 @@ export default {
           if (!item.isApplicable) {
               this.metrics[index].scoringAchieved = '';
           }
+      },
+        saveMetricsToParent() {
+        this.$emit('updateMetrics', this.metrics);
+        console.log(this.metrics)
+    }
+      
+  },
+  watch: {
+      allApplicable(newValue) {
+          this.metrics.forEach(item => (item.isApplicable = !newValue));
+      },
+     metrics: {
+      deep: true,
+      handler() {
+         this.saveMetricsToParent();
       }
+   },
   },
   computed: {
     sectionStatus() {
@@ -104,12 +120,7 @@ export default {
         return 'Partial';
       }
     },
-  },
-  watch: {
-      allApplicable(newValue) {
-          this.metrics.forEach(item => (item.isApplicable = !newValue));
-      },
-  },
+}
 }
 </script>
 
@@ -119,11 +130,11 @@ export default {
 
 <style scoped>
 .scrollable-table {
-   max-height: 500px; /* Adjust this value to your needs */
-   width: 1400px; 
-    overflow-y: auto;
+   max-height: 400px; /* Adjust this value to your needs */
+   
+    overflow: auto;
   
 }
 
-</style> 
+</style>
 

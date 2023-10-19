@@ -3,19 +3,19 @@
     <!-- Company Logo -->
     <div class="logo-section">
       <v-img 
-      src="@/assets/logo.png" alt="Company Logo" class="company-logo">
+      src="@/assets/logo.jpeg" alt="Company Logo" class="company-logo">
       </v-img>
     </div>
 
     <!-- Description -->
     <div class="description-section">
-      <p class="company-description">EcoChain: Revolutionising compliance through innovation</p>
+      <p class="company-description"><i>Revolutionising compliance through innovation</i></p>
     </div>
 
     <!-- Picture -->
     <div class="picture-section">
     <v-img 
-      src="@/assets/treephoto.png" alt="Company photo" class = "company-picture" >
+      src="@/assets/brandingphoto.png" alt="Company photo" class = "company-picture" >
     </v-img>
     </div>
 

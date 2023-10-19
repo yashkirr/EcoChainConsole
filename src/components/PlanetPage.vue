@@ -129,11 +129,11 @@ export default {
 @import url("https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css");
 
 .scrollable-table {
-  max-height: 500px;
+  max-height: 400px;
   /* Adjust this value to your needs */
-  width: 1400px;
 
-  overflow-y: auto;
+
+  overflow: auto;
 
 }
 </style>
