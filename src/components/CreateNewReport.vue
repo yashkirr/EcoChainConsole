@@ -30,47 +30,43 @@
                   <h1>Submission Information</h1>
                 </td>
               </tr>
-            </thead><br>
+            </thead>
             <tbody>
               <tr>
-                <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Company</td>
-                <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">[Name of Company]</td>
-                <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Submitted by</td>
-                <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">[Name of Submitter]</td>
+                <td class="review-cell">Company</td>
+                <td class="review-cell">[Name of Company]</td>
+                <td class="review-cell">Submitted by</td>
+                <td class="review-cell">[Name of Submitter]</td>
               </tr>
               <tr>
-                <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Submission Period</td>
-                <td colspan="3" style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">01 May 2022 - 30 April 2023</td>
+                <td class="review-cell">Submission Period</td>
+                <td colspan="3" class="review-cell">01 May 2022 - 30 April 2023</td>
               </tr>
               <tr>
                 <td colspan="4"><br>
                   <table style="width: 100%;">
                     <tbody>
                       <tr>
-                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Sections included in Submission</td>
-                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)"></td>
+                        <td class="review-cell">Sections included in Submission</td>
+                        <td class="review-cell"></td>
                       </tr>
                     </tbody>
                     <tbody>
                       <tr>
-                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">People</td>
-                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('PeoplePage') }}
-                        </td>
+                        <td class="review-cell">People</td>
+                        <td class="review-cell">{{ getSectionStatus('PeoplePage') }}</td>
                       </tr>
                       <tr>
-                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Planet</td>
-                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('PlanetPage') }}
-                        </td>
+                        <td class="review-cell">Planet</td>
+                        <td class="review-cell">{{ getSectionStatus('PlanetPage') }}</td>
                       </tr>
                       <tr>
-                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Prosperity</td>
-                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{
-                          getSectionStatus('ProsperityPage') }}</td>
+                        <td class="review-cell">Prosperity</td>
+                        <td class="review-cell">{{ getSectionStatus('ProsperityPage') }}</td>
                       </tr>
                       <tr>
-                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Governance</td>
-                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{
-                          getSectionStatus('GovernancePage') }}</td>
+                        <td class="review-cell">Governance</td>
+                        <td class="review-cell">{{ getSectionStatus('GovernancePage') }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -296,6 +292,8 @@ export default {
   padding: 50px;
 }
 
-
-
+.review-cell {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+  height: 45px;
+}
 </style>
