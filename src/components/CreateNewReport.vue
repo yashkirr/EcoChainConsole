@@ -29,59 +29,58 @@
           <ProsperityPage ref="ProsperityPage"/>
         </TabContent>
         <TabContent title="Review and Submit" icon="ti-check-box">    
-      <table>
+      <table style="width: 100%; ">
         <thead>
           <tr>
             <td colspan="4">
               <h1>Submission Information</h1>
             </td>
           </tr>
-        </thead>
-  
-        <tbody>
+        </thead><br>
+                <tbody>
           <tr>
-            <td>Company</td>
-            <td>[Name of Company]</td>
-            <td>Submitted by</td>
-            <td>[Name of Submitter]</td>
+            <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Company</td>
+            <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">[Name of Company]</td>
+            <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Submitted by</td>
+            <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">[Name of Submitter]</td>
           </tr>
           <tr>
-            <td>Submission Period</td>
-            <td colspan="3">01 May 2022 - 30 April 2023</td>
+            <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Submission Period</td>
+            <td colspan="3" style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">01 May 2022 - 30 April 2023</td>
           </tr>
           <tr>
-            <td colspan="4">
-              <table>
+            <td colspan="4"><br>
+              <table style="width: 100%;">
                 <tbody>
                   <tr>
-                    <td>Sections included in Submission</td>
-                    <td></td>
+                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Sections included in Submission</td>
+                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)"></td>
                   </tr>
                 </tbody>
                 <tbody>
                   <tr>
-                    <td>People</td>
-                    <td>{{ getSectionStatus('PeoplePage') }}</td>
+                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">People</td>
+                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('PeoplePage') }}</td>
                   </tr>
                   <tr>
-                    <td>Planet</td>
-                    <td>{{ getSectionStatus('PlanetPage') }}</td>
+                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Planet</td>
+                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('PlanetPage') }}</td>
                   </tr>
                   <tr>
-                    <td>Prosperity</td>
-                    <td>{{ getSectionStatus('ProsperityPage') }}</td>
+                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Prosperity</td>
+                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('ProsperityPage') }}</td>
                   </tr>
                   <tr>
-                    <td>Governance</td>
-                    <td>{{ getSectionStatus('GovernancePage') }}</td>
+                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Governance</td>
+                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('GovernancePage') }}</td>
                   </tr>
                 </tbody>
               </table>
             </td>
           </tr>
         </tbody>
-      </table>
-      Once Submitted, a PDF will be generated for the report, a record will be stored on the Blockchain, and an NFT will be minted as certification. Please note that this is irreversible.
+      </table><br>
+      Once Submitted, an email of the report will be sent, a record will be stored on the Blockchain, and an NFT will be minted as certification. Please note that this is irreversible.
         </TabContent>
       </div>
     </FormWizard>
@@ -248,5 +247,6 @@ export default {
 .form-wizard-outer {
   padding: 50px;
 }
+
 
 </style>

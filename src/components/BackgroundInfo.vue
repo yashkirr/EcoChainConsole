@@ -27,7 +27,7 @@
 
 </v-row>
 
-      <p>Please select your reporting period</p>
+      <p>Please select your reporting period</p><br>
 
       <label>Start Date</label>
       <v-text-field v-model="startDate" type="date"  variant = "outlined" ></v-text-field>
