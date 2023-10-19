@@ -27,7 +27,7 @@
 
 </v-row>
 
-      <p>Please select your reporting period</p><br>
+      <p>Please select your reporting period</p>
 
       <label>Start Date</label>
       <v-text-field v-model="startDate" type="date"  variant = "outlined" ></v-text-field>
@@ -39,13 +39,6 @@
        >
        </v-text-field >
 
-      <v-checkbox v-model="checkbox">
-        <template v-slot:label>
-          <div>
-            I hereby confirm that all metric scores provided are true and correct. In the case that audit findings reflect misconduct in this submission, I accept full responsibility for non-compliant reporting.
-          </div>
-        </template>
-      </v-checkbox>
        
     
     </v-form>
@@ -60,9 +53,14 @@ export default {
     return {
       firstName: '',
       lastName: '',
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
       startDate: null,
       endDate: null,
-      checkbox: false,
+     
     };
   },
   methods: {
@@ -74,7 +72,9 @@ export default {
         startDate: this.startDate,
         endDate: this.endDate
       });
-    }
+    }, 
+
+    
   }
 };
 </script>

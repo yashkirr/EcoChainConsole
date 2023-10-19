@@ -3,88 +3,112 @@
     <h1 text: center> ESG Submission </h1>
     <br>
     <br>
-    <FormWizard 
-      @on-complete="onComplete"
-      @on-change="(...args) => beforeChange(...args)"
-      color="#219653"
-      step-size="xs"
-      back-button-text="Back to previous section"
-      next-button-text="Next section"
-      finish-button-text="Submit">
+    <FormWizard @on-complete="onComplete" @on-change="(...args) => beforeChange(...args)" color="#219653" step-size="xs"
+      back-button-text="Back to previous section" next-button-text="Next section" finish-button-text="Submit">
 
       <div class="form-wizard-container">
         <TabContent title="Submission Info" icon="ti-wallet" text-center>
-          <BackgroundInfo/>
+          <BackgroundInfo />
         </TabContent>
         <TabContent title="People" icon="ti-user">
           <PeoplePage ref="PeoplePage" />
         </TabContent>
         <TabContent title="Governance" icon="ti-shield">
-          <GovernancePage ref="GovernancePage"/>
+          <GovernancePage ref="GovernancePage" />
         </TabContent>
         <TabContent title="Planet" icon="ti-world">
-          <PlanetPage ref="PlanetPage"/>
+          <PlanetPage ref="PlanetPage" />
         </TabContent>
         <TabContent title="Prosperity" icon="ti-wallet">
-          <ProsperityPage ref="ProsperityPage"/>
+          <ProsperityPage ref="ProsperityPage" />
         </TabContent>
-        <TabContent title="Review and Submit" icon="ti-check-box">    
-      <table style="width: 100%; ">
-        <thead>
-          <tr>
-            <td colspan="4">
-              <h1>Submission Information</h1>
-            </td>
-          </tr>
-        </thead><br>
-                <tbody>
-          <tr>
-            <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Company</td>
-            <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">[Name of Company]</td>
-            <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Submitted by</td>
-            <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">[Name of Submitter]</td>
-          </tr>
-          <tr>
-            <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Submission Period</td>
-            <td colspan="3" style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">01 May 2022 - 30 April 2023</td>
-          </tr>
-          <tr>
-            <td colspan="4"><br>
-              <table style="width: 100%;">
-                <tbody>
-                  <tr>
-                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Sections included in Submission</td>
-                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)"></td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">People</td>
-                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('PeoplePage') }}</td>
-                  </tr>
-                  <tr>
-                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Planet</td>
-                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('PlanetPage') }}</td>
-                  </tr>
-                  <tr>
-                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Prosperity</td>
-                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('ProsperityPage') }}</td>
-                  </tr>
-                  <tr>
-                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Governance</td>
-                    <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('GovernancePage') }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table><br>
-      Once Submitted, an email of the report will be sent, a record will be stored on the Blockchain, and an NFT will be minted as certification. Please note that this is irreversible.
+        <TabContent title="Review and Submit" icon="ti-check-box">
+          <table style="width: 100%; ">
+            <thead>
+              <tr>
+                <td colspan="4">
+                  <h1>Submission Information</h1>
+                </td>
+              </tr>
+            </thead><br>
+            <tbody>
+              <tr>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Company</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">[Name of Company]</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Submitted by</td>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">[Name of Submitter]</td>
+              </tr>
+              <tr>
+                <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Submission Period</td>
+                <td colspan="3" style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">01 May 2022 - 30 April 2023</td>
+              </tr>
+              <tr>
+                <td colspan="4"><br>
+                  <table style="width: 100%;">
+                    <tbody>
+                      <tr>
+                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Sections included in Submission</td>
+                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)"></td>
+                      </tr>
+                    </tbody>
+                    <tbody>
+                      <tr>
+                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">People</td>
+                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('PeoplePage') }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Planet</td>
+                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{ getSectionStatus('PlanetPage') }}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Prosperity</td>
+                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{
+                          getSectionStatus('ProsperityPage') }}</td>
+                      </tr>
+                      <tr>
+                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">Governance</td>
+                        <td style="border-bottom: 1px solid rgba(128, 128, 128, 0.7)">{{
+                          getSectionStatus('GovernancePage') }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table><br>
+
+          <v-checkbox v-model="checkbox" color= "#219653">
+        <template v-slot:label>
+          <div>
+            By checking this box, I confirm that all metrics provided are accurate. I accept responsibility for any audit discrepancies. Upon submission, an email will be sent, the data will be blockchain-recorded, and an NFT will be minted. All actions are final and irreversible.
+          </div>
+        </template>
+      </v-checkbox>
+         
         </TabContent>
       </div>
     </FormWizard>
   </div>
+
+
+  <v-dialog v-model="dialogVisible" max-width="700px">
+    <v-card>
+      <v-card-title class="mb-4">
+        <span class="text-h5">Please tick the checkbox</span>
+      </v-card-title>
+
+      <v-card-text class="mb-4">
+        Please check the box before continuing
+      </v-card-text>
+
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color= "#219653"  text @click="dialogVisible = false">Okay</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
@@ -109,15 +133,18 @@ export default {
     PlanetPage,
     ProsperityPage
   },
-  
-  data() {   
-   
-   return {
-         diversityInclusion: '',
-         payEquality: '',
-         wageLevel: '',
-         healthSafetyLevel: ''
-      };
+
+  data() {
+
+    return {
+      diversityInclusion: '',
+      payEquality: '',
+      wageLevel: '',
+      healthSafetyLevel: '',
+      dialogVisible: false,
+      checkbox: false,
+
+    };
   },
 
   methods: {
@@ -130,62 +157,62 @@ export default {
       return 'N/A';
     },
     async fetchDashboardData() {
-			try {
-				const token = localStorage.getItem('access_token');
-				const headers = {
-					'Authorization': 'Bearer ' + token
-				};
+      try {
+        const token = localStorage.getItem('access_token');
+        const headers = {
+          'Authorization': 'Bearer ' + token
+        };
 
-				const response = await axios.get(config.backendApiUrl.concat("/get_dashboard"), { headers: headers });
+        const response = await axios.get(config.backendApiUrl.concat("/get_dashboard"), { headers: headers });
 
-				if (response.data.success) {
-					this.name = response.data.name;
-					this.email = response.data.email;
-					this.algo_add = response.data.algo_add;
-					this.submissions = response.data.submissions;
-					this.location = response.data.location;
-					this.industry = response.data.industry;
-					this.size = response.data.size;
-					this.description = response.data.description;
-				} else {
-					console.error('Error fetching dashboard data');
-				}
-			} catch (error) {
-				console.error('There was an error fetching the data', error);
-			}
-		},
-		async createNewReport() {
-			const token = localStorage.getItem('access_token');
-				const headers = {
-					'Authorization': 'Bearer ' + token
-				};
-
-				const response = await axios.get(config.backendApiUrl.concat("/start_submission"), { headers: headers });
-				if (response.data.success) {
-					this.SubmissionID = response.data.submission_id;
-					this.$router.push('/CreateNewReport');
-				}
-		},
-     handleMetricsUpdate(metrics) {
-        this.diversityInclusion = metrics.find(m => m.Metric === 'Diversity and Inclusion').scoringAchieved;
-        this.payEquality = metrics.find(m => m.Metric === 'Pay equality').scoringAchieved;
-        this.wageLevel = metrics.find(m => m.Metric === 'Wage Level').scoringAchieved;
-        this.healthSafetyLevel = metrics.find(m => m.Metric === 'Rate of fatalities').scoringAchieved;
+        if (response.data.success) {
+          this.name = response.data.name;
+          this.email = response.data.email;
+          this.algo_add = response.data.algo_add;
+          this.submissions = response.data.submissions;
+          this.location = response.data.location;
+          this.industry = response.data.industry;
+          this.size = response.data.size;
+          this.description = response.data.description;
+        } else {
+          console.error('Error fetching dashboard data');
+        }
+      } catch (error) {
+        console.error('There was an error fetching the data', error);
+      }
     },
-      async savePeopleMetrics() {  
+    async createNewReport() {
       const token = localStorage.getItem('access_token');
-					const headers = {
-						'Authorization': 'Bearer ' + token
-					};
-          
-      try {   
-            
-        const response = await axios.post(config.backendApiUrl.concat("/input_peoplemetrics/"+ this.$route.query.submissionID), {
+      const headers = {
+        'Authorization': 'Bearer ' + token
+      };
+
+      const response = await axios.get(config.backendApiUrl.concat("/start_submission"), { headers: headers });
+      if (response.data.success) {
+        this.SubmissionID = response.data.submission_id;
+        this.$router.push('/CreateNewReport');
+      }
+    },
+    handleMetricsUpdate(metrics) {
+      this.diversityInclusion = metrics.find(m => m.Metric === 'Diversity and Inclusion').scoringAchieved;
+      this.payEquality = metrics.find(m => m.Metric === 'Pay equality').scoringAchieved;
+      this.wageLevel = metrics.find(m => m.Metric === 'Wage Level').scoringAchieved;
+      this.healthSafetyLevel = metrics.find(m => m.Metric === 'Rate of fatalities').scoringAchieved;
+    },
+    async savePeopleMetrics() {
+      const token = localStorage.getItem('access_token');
+      const headers = {
+        'Authorization': 'Bearer ' + token
+      };
+
+      try {
+
+        const response = await axios.post(config.backendApiUrl.concat("/input_peoplemetrics/" + this.$route.query.submissionID), {
           DiversityAndInclusion: this.diversityInclusion,
           PayEquality: this.payEquality,
           WageLevel: this.wageLevel,
           HealthAndSafetyLevel: this.healthSafetyLevel
-        },{ headers: headers });
+        }, { headers: headers });
 
         if (response.data.success) {
           console.log('Metrics saved successfully:', response.data.message);
@@ -198,10 +225,21 @@ export default {
     },
 
     onComplete() {
-      this.$router.push({ name: 'SuccessPage' }); // Using named route
-      // or
-      // this.$router.push('/SuccessPage'); // Using path directly
-    },
+  this.verifyCheckboxBeforeSubmit();
+
+  if (!this.canSubmit) {
+    if(!this.checkbox){ return alert('Please tick the checkbox before proceeding.');
+  } else { this.$router.push({ name: 'SuccessPage' });}
+// Prevent submission
+  }
+
+   // Using named route
+  // or
+  // this.$router.push('/SuccessPage'); // Using path directly
+},
+
+
+    
 
     beforeChange(activeTabIndex, nextTabIndex) {
       console.log('beforeChange function triggered')
@@ -226,9 +264,19 @@ export default {
           // Save data or checks related to the Review and Submit tab
           break;
       }
+    },
+
+
+    verifyCheckboxBeforeSubmit() {
+      if (!this.checkbox) {
+        // Display a warning or notification about the unchecked checkbox
+        alert('Please tick the checkbox before proceeding.');
+        return ;
+      }
+
     }
   }
-};
+  };
 
 </script>
 
@@ -237,16 +285,17 @@ export default {
 
 .form-wizard-container {
   background-color: white;
-  padding: 20px 30px 20px 40px; 
-  margin: 10px 10px ;
+  padding: 20px 30px 20px 40px;
+  margin: 10px 10px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: auto;
 }
 
 .form-wizard-outer {
   padding: 50px;
 }
+
 
 
 </style>
